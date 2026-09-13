@@ -30,20 +30,20 @@ img.fig{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);b
 .aibox{border-left:6px solid var(--ai)}
 footer{margin:50px 0 30px;color:var(--muted);font-size:13px}
 .tag{font:600 12px 'IBM Plex Mono';color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
-</style></head><body><header class="top"><div class="wrap"><div class="tag" style="color:#C98FB0">Bengkel Amali 2 Hari · 14 hingga 15 September 2026 · 09:30 hingga 17:00</div>
+.copy{position:relative}.copy button{position:absolute;top:8px;right:8px;font:600 12px Inter,sans-serif;border:0;border-radius:6px;padding:5px 9px;background:#9B4D7A;color:#fff;cursor:pointer;z-index:1}.copy button.done{background:#2E8B57}.copy button.manual{background:#A8721E}.copy pre{padding-right:78px}</style></head><body><header class="top"><div class="wrap"><div class="tag" style="color:#C98FB0">Bengkel Amali 2 Hari · 14 hingga 15 September 2026 · 09:30 hingga 17:00</div>
 <h1>Menguasai Jaminan Kualiti Perisian (SQA) moden</h1><div class="en">Dipraktikkan hujung ke hujung, selaras KRISAv2 Beta 2026 dan PPrISA 2.0 (JDN)</div>
 <div class="meta"><span class="pill">Makmal Komputer (Aras 11), Menara MyIPO</span><span class="pill">Penceramah: Encik Al-Abrar bin Abdul Wahid</span></div>
 <div class="meta"><a class="btn ai" href="workshop-ai/W00-setup/index.html">Mula: Setup PC dan opencode</a><a class="btn ghost" href="https://github.com/FTH-ABR/sqa-krisa-bengkel">Repositori GitHub</a><a class="btn ghost" href="references/README.md">Rujukan JDN</a></div></div></header>
 <main class="wrap">
-<h2>Langkah 0: Pasang Git dan Node.js (jika belum ada)</h2><div class="card"><p><b>0A. Semak dahulu.</b> Buka PowerShell dan taip:</p><pre>git --version
+<h2>Langkah 0: Pasang Git dan Node.js (jika belum ada)</h2><div class="card"><p><b>0A. Semak dahulu.</b> Buka PowerShell dan taip:</p><div class="copy"><button type="button" onclick="salin(this)" title="Salin ke papan keratan / Copy to clipboard">Salin</button><pre>git --version
 node --version
-npm --version</pre><p>Ketiga-tiga memaparkan versi (node v20 atau lebih baharu)? Terus ke Langkah 1.</p><p><b>0B. Ada hak admin:</b></p><pre>winget install -e --id Git.Git --accept-source-agreements --accept-package-agreements
-winget install -e --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements</pre><p><b>0C. Tiada admin atau tiada winget:</b></p><pre>cd $HOME
+npm --version</pre></div><p>Ketiga-tiga memaparkan versi (node v20 atau lebih baharu)? Terus ke Langkah 1.</p><p><b>0B. Ada hak admin:</b></p><div class="copy"><button type="button" onclick="salin(this)" title="Salin ke papan keratan / Copy to clipboard">Salin</button><pre>winget install -e --id Git.Git --accept-source-agreements --accept-package-agreements
+winget install -e --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements</pre></div><p><b>0C. Tiada admin atau tiada winget:</b></p><div class="copy"><button type="button" onclick="salin(this)" title="Salin ke papan keratan / Copy to clipboard">Salin</button><pre>cd $HOME
 Invoke-WebRequest https://fth-abr.github.io/sqa-krisa-bengkel/setup/install-prereqs.ps1 -OutFile install-prereqs.ps1 -UseBasicParsing
-powershell -ExecutionPolicy Bypass -File .\install-prereqs.ps1</pre><p><b>0D.</b> Tutup PowerShell, buka tetingkap baharu dan ulang 0A. Panduan bergambar dengan butang Salin: <a href="workshop-ai/W00-setup/index.html">W00 Setup</a>.</p></div><h2>Langkah 1: Klon repositori dan semak PC</h2><pre>cd $HOME
+powershell -ExecutionPolicy Bypass -File .\install-prereqs.ps1</pre></div><p><b>0D.</b> Tutup PowerShell, buka tetingkap baharu dan ulang 0A. Panduan bergambar dengan butang Salin: <a href="workshop-ai/W00-setup/index.html">W00 Setup</a>.</p></div><h2>Langkah 1: Klon repositori dan semak PC</h2><div class="copy"><button type="button" onclick="salin(this)" title="Salin ke papan keratan / Copy to clipboard">Salin</button><pre>cd $HOME
 git clone https://github.com/FTH-ABR/sqa-krisa-bengkel.git
 cd sqa-krisa-bengkel
-powershell -ExecutionPolicy Bypass -File .\setup\check-lab.ps1</pre>
+powershell -ExecutionPolicy Bypass -File .\setup\check-lab.ps1</pre></div>
 <h2>Jadual dan bahan</h2><div class="tw"><table><tr><th>Masa</th><th>Modul</th><th>Slaid dan rujukan</th><th>Bengkel AI</th></tr><tr><th colspan='4'>Hari 1: Membina Kualiti Sebelum Pembinaan</th></tr><tr><td class='mono'>09:00 hingga 09:30</td><td>Aluan, pra-penilaian dan persediaan PC</td><td></td><td><a href='workshop-ai/W00-setup/index.html'>W00 Setup</a></td></tr><tr><td class='mono'>09:30 hingga 11:00</td><td><b>M01</b> Minda Kualiti<br><span style='color:#5A6879'>The Quality Mindset</span></td><td><a href='slides/M01-M02/index.html'>Hab modul</a></td><td><a href='workshop-ai/W01-minda-kualiti/index.html'>W01 (20 min)</a></td></tr><tr><td class='mono'>11:15 hingga 13:00</td><td><b>M02</b> Perancangan QA dan Kualiti Proaktif<br><span style='color:#5A6879'>QA Planning and Proactive Quality</span></td><td><a href='slides/M01-M02/index-M02.html'>Hab modul</a></td><td><a href='workshop-ai/W02-perancangan-qa/index.html'>W02 (25 min)</a></td></tr><tr><td class='mono'>14:00 hingga 15:30</td><td><b>M03</b> Semakan Reka Bentuk dan Perancangan Ujian Berasaskan Risiko<br><span style='color:#5A6879'>Design Review and Risk-Based Test Planning</span></td><td><a href='slides/M03/index.html'>Hab modul</a></td><td><a href='workshop-ai/W03-semakan-reka-bentuk-risiko/index.html'>W03 (20 min)</a></td></tr><tr><td class='mono'>15:45 hingga 17:00</td><td><b>M04</b> Reka Bentuk Ujian dan Asas Pengurusan Ujian<br><span style='color:#5A6879'>Test Design and Test Management Fundamentals</span></td><td><a href='slides/M04/index.html'>Hab modul</a></td><td><a href='workshop-ai/W04-reka-bentuk-ujian/index.html'>W04 (15 min)</a></td></tr><tr><th colspan='4'>Hari 2: Ujian, Kualiti Berterusan dan Jaminan Produksi</th></tr><tr><td class='mono'>09:00 hingga 10:30</td><td><b>M05</b> Pengujian Perisian dan Automasi Ujian<br><span style='color:#5A6879'>Software Testing and Test Automation</span></td><td><a href='slides/M05/index.html'>Hab modul</a></td><td><a href='workshop-ai/W05-automasi-ujian/index.html'>W05 (15 min)</a></td></tr><tr><td class='mono'>10:45 hingga 12:30</td><td><b>M06</b> Pengurusan Pepijat dan Metrik Kualiti<br><span style='color:#5A6879'>Bug Management and Quality Metrics</span></td><td><a href='slides/M06/index.html'>Hab modul</a></td><td><a href='workshop-ai/W06-pepijat-metrik/index.html'>W06 (25 min)</a></td></tr><tr><td class='mono'>13:30 hingga 15:00</td><td><b>M07</b> Audit, Pematuhan dan Dokumentasi Kualiti<br><span style='color:#5A6879'>Audit, Compliance and Quality Documentation</span></td><td><a href='slides/M07/index.html'>Hab modul</a></td><td><a href='workshop-ai/W07-audit-dokumentasi/index.html'>W07 (20 min)</a></td></tr><tr><td class='mono'>15:15 hingga 16:30</td><td><b>M08</b> Pengurusan Perubahan, Pemantauan dan Kualiti Berterusan<br><span style='color:#5A6879'>Change Management, Monitoring and Continuous Quality</span></td><td><a href='slides/M08/index.html'>Hab modul</a></td><td><a href='workshop-ai/W08-perubahan-pemantauan/index.html'>W08 (15 min)</a></td></tr><tr><td class='mono'>16:30 hingga 17:30</td><td><b>M09</b> Latihan Kemuncak dan Penutup Kursus<br><span style='color:#5A6879'>Capstone Exercise and Course Wrap-Up</span></td><td><a href='slides/M09/index.html'>Hab modul</a></td><td><a href='workshop-ai/W09-kemuncak/index.html'>W09 (10 min)</a></td></tr></table></div>
 <h2>Gambaran KRISAv2</h2><img class="fig" src="slides/_diagrams/krisa-v2-phases.png" alt="KRISAv2 fasa">
 <div class="grid g3" style="margin-top:14px">
@@ -53,4 +53,39 @@ powershell -ExecutionPolicy Bypass -File .\setup\check-lab.ps1</pre>
 <h2>Pelan kursus</h2><p><a href="docs/pelan-kursus-sqa-bengkel-vKRISA2.0.html">Pelan kursus dwibahasa vKRISA2.0</a></p>
 </main>
 <footer class="wrap">Bengkel Amali SQA KRISAv2 dan PPrISA 2.0 · 14 hingga 15 September 2026 · Makmal Komputer Aras 11, Menara MyIPO · Jurulatih: Al-Abrar bin Abdul Wahid ·
-Rujukan hak cipta Jabatan Digital Negara (JDN), <a href="https://sqa.jdn.gov.my/index.php/ms/">sqa.jdn.gov.my</a></footer></body></html>
+Rujukan hak cipta Jabatan Digital Negara (JDN), <a href="https://sqa.jdn.gov.my/index.php/ms/">sqa.jdn.gov.my</a></footer><script>
+function salinFallback(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text; ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.left = '-9999px';
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  var ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+  document.body.removeChild(ta);
+  return ok;
+}
+function salinSelect(pre) {
+  var r = document.createRange(); r.selectNodeContents(pre);
+  var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+}
+function salinTanda(btn, ok) {
+  btn.textContent = ok ? 'Disalin!' : 'Tekan Ctrl+C';
+  btn.className = ok ? 'done' : 'manual';
+  clearTimeout(btn._t);
+  btn._t = setTimeout(function () { btn.textContent = 'Salin'; btn.className = ''; }, 2000);
+}
+function salin(btn) {
+  var pre = btn.parentNode.querySelector('pre');
+  var text = pre.innerText.replace(/\r\n/g, '\n');
+  var fallback = function () {
+    var ok = salinFallback(text);
+    if (!ok) salinSelect(pre);
+    salinTanda(btn, ok);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function () { salinTanda(btn, true); }, fallback);
+  } else {
+    fallback();
+  }
+}
+</script></body></html>
