@@ -2,7 +2,7 @@
 #
 # Muat turun dan jalankan (tanpa Git) / Download and run (no Git needed):
 #   cd $HOME
-#   Invoke-WebRequest https://fth-abr.github.io/sqa-krisa-bengkel/setup/install-prereqs.ps1 -OutFile install-prereqs.ps1
+#   Invoke-WebRequest https://fth-abr.github.io/sqa-krisa-bengkel/setup/install-prereqs.ps1 -OutFile install-prereqs.ps1 -UseBasicParsing
 #   powershell -ExecutionPolicy Bypass -File .\install-prereqs.ps1
 #
 # Cara kerja / What it does:
@@ -112,10 +112,10 @@ if ($usePortable) {
     if (Test-Path $nodeDir) { Remove-Item -Recurse -Force $nodeDir }
     Expand-Archive -Path $zip -DestinationPath $tmp -Force
     Move-Item -Path (Join-Path $tmp "node-$ver-win-x64") -Destination $nodeDir
-    Add-UserPath $nodeDir
     $npmGlobal = Join-Path $env:APPDATA "npm"
     New-Item -ItemType Directory -Force -Path $npmGlobal | Out-Null
     Add-UserPath $npmGlobal
+    Add-UserPath $nodeDir
     Say "  Node.js dan npm sedia / ready" "Green"
   }
   Remove-Item -Recurse -Force $tmp -ErrorAction SilentlyContinue
