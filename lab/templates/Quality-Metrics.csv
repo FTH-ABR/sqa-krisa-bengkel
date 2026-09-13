@@ -1,0 +1,10 @@
+# Templat Metrik Kualiti (Quality Metrics) ShopFast. Mirrors KRISAv2 Bab 6 seksyen 6.6 Langkah 5 d) Metrik Pengukuran dan D14 Laporan Ujian Penerimaan seksyen Pengukuran Hasil Ujian
+# Rujukan rasmi: ../../references/krisa-v2-beta-2026/BAB6-FASA-PENGUJIAN-PENERIMAAN.pdf#page=6 ; ../../references/templates-D01-D18/docx/D14_DOKUMEN_LAPORAN_UJIAN_PENERIMAAN_UAT_PAT.docx ; panduan dan contoh kiraan: Quality-Metrics-guide.md
+# Baris bermula dengan # ialah nota dan tidak disalin ke output. Jangan guna koma dalam teks. Nilai peratus ditulis dengan 1 tempat perpuluhan (contoh 87.1%).
+# Status: Capai | Tidak Capai | Tiada Data
+Metrik_ID,Metrik,Formula,Input_Data,Nilai,Sasaran,Status,Catatan
+QM-01,Kadar lulus ujian (Test pass rate),Lulus / (Lulus + Gagal) x 100,Lulus=<n>; Gagal=<n>; Disekat=<n>,,Sekurang-kurangnya 95.0%,,Kes Disekat dilaporkan berasingan
+QM-02,Ketumpatan ralat (Defect density),Ralat sebelum pelepasan / Saiz (UFP),Ralat=<n>; UFP=<n>,,Tidak melebihi 0.25 ralat setiap UFP,,Saiz UFP daripada SRS seksyen 7
+QM-03,Keberkesanan penyingkiran ralat (DRE),Ralat sebelum pelepasan / (Ralat sebelum pelepasan + Ralat selepas pelepasan) x 100,Sebelum=<n>; Selepas=<n>,,Sekurang-kurangnya 90.0%,,Ralat selepas pelepasan dikira bagi 30 hari pertama produksi
+QM-04,Kebocoran ralat (Defect leakage),Ralat ditemui dalam UAT / Ralat ditemui dalam ujian sistem x 100,UAT=<n>; Sistem=<n>,,Tidak melebihi 10.0%,,Mengukur keberkesanan ujian sistem
+QM-05,Purata masa pembaikan (MTTR),Jumlah jam pembaikan / Bilangan ralat dibaiki,Jam=<n>; Dibaiki=<n>,,Severity 1 tidak melebihi 8 jam,,Jam dikira dari status Disahkan hingga Sedia Diuji Semula

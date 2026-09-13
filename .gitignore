@@ -1,0 +1,12 @@
+node_modules/
+playwright-report/
+test-results/
+.env
+auth.json
+*.local.md
+lab/outputs/*
+!lab/outputs/.gitkeep
+
+# Trainer-only editable decks: trainees get the PDF exports
+*.pptx
+*.pptx.notes.json

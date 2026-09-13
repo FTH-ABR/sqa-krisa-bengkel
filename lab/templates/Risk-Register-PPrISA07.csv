@@ -1,0 +1,8 @@
+# Templat Daftar Risiko (Risk Register) ShopFast. Mirrors PPrISA07 Pelan Pengurusan Risiko seksyen 5 Penilaian Risiko dan D12 Daftar Risiko
+# Rujukan rasmi: ../../references/pprisa-2.0/templates/pdf/PPrISA07-Pelan_Pengurusan_Risiko.pdf ; ../../references/templates-D01-D18/docx/D12_DOKUMEN_PELAN_INDUK_PENGUJIAN.docx ; PPrISA 2.0 4.2.3 a) ../../references/pprisa-2.0/PPrISA_2.0_Versi_Beta_Februari_2025.pdf#page=71
+# Baris bermula dengan # ialah nota dan tidak disalin ke output. Jangan guna koma dalam teks; guna titik koma.
+# Kategori: Keperluan | Reka Bentuk | Keselamatan | Prestasi | Personel | Perkakasan | Perisian | Persekitaran | Proses
+# Skor = Kebarangkalian_1_5 x Impak_1_5. Tahap: 1-4 Rendah | 5-9 Sederhana | 10-16 Tinggi | 20-25 Kritikal. Keutamaan_Ujian: P1 (Tinggi dan Kritikal) | P2 (Sederhana) | P3 (Rendah). Status: Terbuka | Dalam Tindakan | Ditutup
+ID,Risiko,Kategori,Kebarangkalian_1_5,Impak_1_5,Skor,Tahap,Pemilik,Tindakan_Mitigasi,Keutamaan_Ujian,Status
+RSK-01,Masa respons checkout melebihi sasaran REQ-CHK-06 semasa kempen jualan,Prestasi,3,4,12,Tinggi,Ketua Pembangun,Ujian beban 50 pengguna serentak sebelum gate G3; pantau p95 di staging,P1,Terbuka
+RSK-02,Data ujian ahli dan bukan ahli tidak mencukupi untuk menguji diskaun REQ-CHK-03 semasa UAT,Proses,3,3,9,Sederhana,Ketua Ujian,Sediakan set data sintetik ahli dan bukan ahli sebelum UAT,P2,Terbuka

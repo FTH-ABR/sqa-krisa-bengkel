@@ -1,0 +1,145 @@
+:root {
+  --bg: #f5f6f8;
+  --panel: #ffffff;
+  --ink: #1d2433;
+  --muted: #667085;
+  --line: #e3e6eb;
+  --brand: #0f6e5c;
+  --brand-ink: #ffffff;
+  --danger-bg: #fdecec;
+  --danger-ink: #9b1c1c;
+  --ok-bg: #e8f6ef;
+  --ok-ink: #125c3b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.en {
+  display: block;
+  font-size: 0.72em;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+h1 .en, h2 .en { display: inline; margin-left: 0.4em; }
+button .en { display: inline; color: inherit; opacity: 0.8; margin-left: 0.3em; }
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px 24px;
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+.topbar .brand { font-size: 1.4rem; font-weight: 700; }
+.topbar .tagline .en { color: #cfe7e1; display: inline; margin-left: 0.4em; }
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+  gap: 20px;
+  padding: 20px 24px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; padding: 16px; }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+.products-panel { align-self: start; }
+.messages { position: sticky; top: 0; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.messages .alert { margin: 12px 0 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
+.panel h1, .panel h2 { margin: 0 0 12px; font-size: 1.1rem; }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+.product {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.product h3 { margin: 0; font-size: 1rem; }
+.product p { margin: 0; }
+.price { font-weight: 700; font-size: 1.05rem; }
+
+.inline { display: flex; gap: 8px; align-items: center; }
+.qty { width: 70px; }
+
+.muted { color: var(--muted); }
+.small { font-size: 0.85rem; }
+
+label { display: block; margin: 10px 0 4px; font-weight: 600; font-size: 0.9rem; }
+input, select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #c9ced6;
+  border-radius: 6px;
+  font: inherit;
+}
+.inline input { width: auto; flex: 1 1 auto; min-width: 0; }
+.inline .qty { flex: 0 0 72px; width: 72px; }
+.inline button { flex: 0 0 auto; white-space: nowrap; }
+.product .inline button { flex: 1 1 auto; }
+
+button {
+  font: inherit;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+button.primary { background: var(--brand); color: var(--brand-ink); }
+button.secondary { background: #fff; border-color: var(--brand); color: var(--brand); }
+button.link { background: none; color: var(--danger-ink); padding: 2px 4px; }
+#checkout-submit { margin-top: 16px; width: 100%; }
+
+.cart-items { list-style: none; margin: 0; padding: 0; }
+.cart-items li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.totals { margin: 14px 0 0; }
+.totals div { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; }
+.totals dt { margin: 0; }
+.totals dt .en { display: inline; margin-left: 0.3em; }
+.totals dd { margin: 0; font-variant-numeric: tabular-nums; }
+.totals .sub { font-size: 0.9rem; color: var(--muted); padding-left: 10px; }
+.login-actions { margin-top: 12px; }
+.totals .grand { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 8px; font-weight: 700; font-size: 1.1rem; }
+
+.alert { border-radius: 8px; padding: 12px 14px; margin-bottom: 16px; }
+.alert.error { background: var(--danger-bg); color: var(--danger-ink); }
+.alert.success { background: var(--ok-bg); color: var(--ok-ink); }
+.alert h2 { margin: 0 0 6px; font-size: 1.05rem; }
+.alert p { margin: 4px 0; }
+
+[hidden] { display: none !important; }

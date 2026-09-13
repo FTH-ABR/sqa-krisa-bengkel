@@ -1,0 +1,7 @@
+# Templat RTM (Requirements Traceability Matrix) ShopFast. Mirrors KRISAv2 Bab 2 seksyen 2.11 Templat T2.8 Traceability Matrix [F1.8]
+# Rujukan rasmi: ../../references/krisa-v2-beta-2026/BAB2-FASA-PERMULAAN.pdf#page=56 ; panduan pengisian: RTM-guide.md
+# Baris bermula dengan # ialah nota dan tidak disalin ke output. Nilai berbilang dalam satu sel dipisahkan dengan titik koma. Jangan guna koma dalam teks.
+# Test_Level: Unit | Integrasi | Sistem | UAT | PAT. Status: Belum Diuji | Lulus | Gagal | Disekat | Tidak Berkenaan. Coverage: Diliputi | Separa | Tiada
+BR_ID,FR_ID,Requirement,Test_Case_IDs,Test_Level,Status,Defect_IDs,Coverage
+BR-03,REQ-CHK-02,Kod promosi 6 hingga 10 aksara huruf besar dan digit sahaja,TC-CHK-010;TC-CHK-011,Sistem,Belum Diuji,,Separa
+BR-06,REQ-CHK-05,Peralihan status pesanan yang tidak dibenarkan ditolak dengan 409,TC-CHK-030,Sistem;UAT,Belum Diuji,,Separa

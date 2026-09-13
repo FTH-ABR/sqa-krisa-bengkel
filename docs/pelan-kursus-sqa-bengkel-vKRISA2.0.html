@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SQA — Bengkel Amali 2 Hari / 2-Day Hands-On Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E7ECF2; --panel:#FFFFFF; --panel-2:#F4F7FA;
+    --ink:#0F1620; --muted:#5A6879; --faint:#8A97A8;
+    --line:#D8E0EA; --line-strong:#C3CEDC;
+    --blueprint:#1B3B73; --blueprint-soft:#E9F0FA;
+    --plan:#5B5FA6; --build:#1F6F8B; --verify:#26805A; --assure:#A8721E; --sustain:#9B4D7A;
+    --shadow:0 1px 2px rgba(15,22,32,.04), 0 8px 28px rgba(27,59,115,.06);
+    --shadow-lift:0 2px 6px rgba(15,22,32,.06), 0 18px 46px rgba(27,59,115,.12);
+    --radius:14px;
+    --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --disp:'Space Grotesk', system-ui, sans-serif;
+    --body:'Inter', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.55;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(231,236,242,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .topbar-inner{display:flex;align-items:center;gap:14px;height:58px;}
+  .brand{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--blueprint);display:flex;align-items:center;gap:9px;white-space:nowrap;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--verify);box-shadow:0 0 0 3px rgba(38,128,90,.16);}
+  .navlinks{margin-left:auto;display:flex;gap:5px;}
+  .navlinks a{font-family:var(--mono);font-size:12px;text-decoration:none;color:var(--muted);padding:7px 11px;border-radius:8px;transition:.18s;letter-spacing:.02em;}
+  .navlinks a:hover{background:var(--panel);color:var(--ink);}
+  .langswitch{display:inline-flex;background:var(--panel);border:1px solid var(--line-strong);border-radius:9px;padding:3px;gap:2px;}
+  .langswitch button{font-family:var(--mono);font-size:12px;border:none;background:transparent;color:var(--muted);padding:6px 12px;border-radius:7px;cursor:pointer;transition:.15s;letter-spacing:.03em;}
+  .langswitch button.active{background:var(--blueprint);color:#fff;}
+  .btn-print{font-family:var(--mono);font-size:12px;border:1px solid var(--line-strong);background:var(--panel);color:var(--ink);padding:7px 12px;border-radius:8px;cursor:pointer;transition:.18s;}
+  .btn-print:hover{border-color:var(--blueprint);color:var(--blueprint);}
+
+  .hero{padding:60px 0 30px;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:radial-gradient(120% 90% at 78% 6%,#000 0%,transparent 62%);mask-image:radial-gradient(120% 90% at 78% 6%,#000 0%,transparent 62%);opacity:.55;pointer-events:none;}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blueprint);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;}
+  .eyebrow .bar{width:26px;height:2px;background:var(--blueprint);display:inline-block;}
+  h1{font-family:var(--disp);font-weight:700;font-size:clamp(31px,5.4vw,54px);line-height:1.04;letter-spacing:-.02em;margin:0 0 18px;max-width:18ch;}
+  h1 .hl{color:var(--blueprint);}
+  .lede{font-size:clamp(15.5px,2.1vw,19px);color:var(--muted);max-width:62ch;margin:0 0 22px;}
+  .lede strong{color:var(--ink);font-weight:600;}
+  .modern-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px;}
+  .mtag{font-family:var(--mono);font-size:11.5px;color:var(--blueprint);background:var(--blueprint-soft);border:1px solid #d5e2f3;padding:5px 11px;border-radius:20px;}
+  .meta-strip{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+  .meta{background:var(--panel);padding:16px 22px;flex:1 1 150px;min-width:140px;}
+  .meta .k{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);}
+  .meta .v{font-family:var(--disp);font-weight:600;font-size:25px;margin-top:3px;line-height:1;}
+  .meta .v small{font-family:var(--body);font-size:13px;font-weight:500;color:var(--muted);}
+
+  section{padding:40px 0;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:24px;flex-wrap:wrap;}
+  .sec-num{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.1em;}
+  .sec-title{font-family:var(--disp);font-weight:600;font-size:clamp(21px,3.3vw,29px);letter-spacing:-.01em;margin:0;}
+  .sec-sub{color:var(--muted);font-size:15px;margin:8px 0 0;max-width:72ch;}
+
+  .objgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow);}
+  .obj{display:flex;gap:12px;align-items:flex-start;padding:8px 0;font-size:14.5px;color:#26313f;border-bottom:1px solid var(--panel-2);}
+  .obj .n{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--blueprint);flex:none;width:24px;height:24px;border-radius:6px;background:var(--blueprint-soft);display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .obj b{color:var(--ink);font-weight:600;}
+
+  .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+  .phase{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 15px 15px;border-top:3px solid var(--pc);position:relative;box-shadow:var(--shadow);}
+  .phase .pn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--pc);font-weight:600;}
+  .phase h4{font-family:var(--disp);font-weight:600;font-size:16px;margin:8px 0 6px;}
+  .phase p{font-size:13px;color:var(--muted);margin:0;line-height:1.45;}
+  .phase .arrow{position:absolute;right:-11px;top:50%;transform:translateY(-50%);z-index:2;color:var(--line-strong);font-size:16px;}
+  .phase:last-child .arrow{display:none;}
+
+  .day-band{display:flex;align-items:center;gap:20px;margin:6px 0 26px;padding:22px 26px;border-radius:var(--radius);background:var(--blueprint);color:#fff;box-shadow:var(--shadow-lift);position:relative;overflow:hidden;}
+  .day-band::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:30px 30px;pointer-events:none;}
+  .day-tag{font-family:var(--mono);font-size:12px;letter-spacing:.2em;opacity:.72;position:relative;}
+  .day-band h3{font-family:var(--disp);font-weight:700;font-size:clamp(19px,3vw,26px);margin:4px 0 0;position:relative;}
+  .day-band .theme{margin-left:auto;text-align:right;position:relative;}
+  .day-band .theme .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.13em;opacity:.6;text-transform:uppercase;}
+  .day-band .theme .val{font-family:var(--disp);font-weight:600;font-size:16px;margin-top:2px;}
+
+  .mod{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:16px;overflow:hidden;border-left:4px solid var(--pc,var(--blueprint));transition:box-shadow .2s;}
+  .mod:hover{box-shadow:var(--shadow-lift);}
+  .mod-top{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:18px 22px;cursor:pointer;}
+  .mod-id{font-family:var(--mono);font-weight:600;font-size:12px;color:var(--pc);background:color-mix(in srgb,var(--pc) 10%, #fff);border:1px solid color-mix(in srgb,var(--pc) 26%, #fff);padding:7px 10px;border-radius:8px;white-space:nowrap;letter-spacing:.03em;}
+  .mod-heading{min-width:0;}
+  .mod-heading h4{font-family:var(--disp);font-weight:600;font-size:17.5px;margin:0;letter-spacing:-.01em;}
+  .mod-heading .my{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:3px;letter-spacing:.01em;}
+  .mod-right{display:flex;align-items:center;gap:14px;}
+  .phase-pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--pc);background:color-mix(in srgb,var(--pc) 11%, #fff);padding:5px 9px;border-radius:20px;white-space:nowrap;}
+  .dur{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap;}
+  .chev{width:22px;height:22px;flex:none;color:var(--faint);transition:transform .25s;}
+  details[open] .chev{transform:rotate(180deg);}
+  .mod-body{padding:2px 22px 22px;border-top:1px dashed var(--line);}
+  .mod-body-inner{padding-top:18px;display:grid;grid-template-columns:1fr;gap:16px;}
+  .block .blabel{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+  .block .blabel::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pc);}
+  .block p{margin:0;font-size:14.5px;color:#26313f;}
+  .steps{margin:0;padding:0;list-style:none;counter-reset:s;}
+  .steps li{position:relative;padding:9px 0 9px 40px;font-size:14.5px;color:#26313f;border-bottom:1px solid var(--panel-2);}
+  .steps li:last-child{border-bottom:none;}
+  .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:8px;width:26px;height:26px;border-radius:7px;background:var(--panel-2);border:1px solid var(--line);font-family:var(--mono);font-size:12px;font-weight:600;color:var(--pc);display:flex;align-items:center;justify-content:center;}
+  .sublab{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--pc);font-weight:600;margin:4px 0 2px;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{font-family:var(--mono);font-size:12px;color:#33414f;background:var(--panel-2);border:1px solid var(--line);padding:5px 10px;border-radius:7px;}
+  .output{display:flex;gap:12px;align-items:flex-start;background:color-mix(in srgb,var(--pc) 7%, #fff);border:1px solid color-mix(in srgb,var(--pc) 22%,#fff);border-radius:10px;padding:13px 15px;}
+  .output .tag{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;color:#fff;background:var(--pc);padding:4px 8px;border-radius:6px;white-space:nowrap;margin-top:1px;}
+  .output .txt{font-size:14px;color:#26313f;font-weight:500;}
+
+  .brk{display:flex;align-items:center;gap:12px;margin:2px 0 16px;padding-left:6px;font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.03em;}
+  .brk .ln{flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--line-strong) 0 6px,transparent 6px 12px);}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);}
+  .card h4{font-family:var(--disp);font-weight:600;font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:10px;}
+  .card h4 .ic{width:30px;height:30px;border-radius:8px;background:var(--blueprint-soft);color:var(--blueprint);display:flex;align-items:center;justify-content:center;flex:none;}
+  .list{margin:0;padding:0;list-style:none;}
+  .list li{position:relative;padding:7px 0 7px 24px;font-size:14px;color:#2b3644;border-bottom:1px solid var(--panel-2);}
+  .list li:last-child{border-bottom:none;}
+  .list li::before{content:"";position:absolute;left:2px;top:14px;width:9px;height:9px;border-radius:2px;background:var(--blueprint);opacity:.85;}
+  .list.ok li::before{background:var(--verify);}
+  .kbd{font-family:var(--mono);font-size:12.5px;background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--blueprint);}
+  .note-inline{font-size:13px;color:var(--muted);margin:14px 0 0;}
+  .krisa-intro{font-size:14.5px;color:#26313f;margin:0 0 18px;max-width:84ch;}
+  .krisa-note{font-size:12.5px;color:var(--muted);margin:16px 0 0;max-width:84ch;}
+  .tblscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .trainer{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between;}
+  .trainer-id{display:flex;align-items:center;gap:16px;}
+  .tr-ava{width:54px;height:54px;border-radius:50%;background:var(--blueprint);color:#fff;font-family:var(--disp);font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 0 0 4px var(--blueprint-soft);}
+  .tr-name{font-family:var(--disp);font-weight:600;font-size:19px;}
+  .tr-role{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:2px;letter-spacing:.02em;}
+  .trainer-contacts{display:flex;flex-wrap:wrap;gap:10px;}
+  .tc{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;text-decoration:none;color:var(--ink);background:var(--panel-2);border:1px solid var(--line);padding:9px 13px;border-radius:9px;transition:.16s;}
+  .tc:hover{border-color:var(--blueprint);color:var(--blueprint);background:var(--panel);}
+  .tc svg{width:15px;height:15px;color:var(--blueprint);flex:none;}
+
+  .tbl{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+  .tbl th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding:14px 20px;background:var(--panel-2);border-bottom:1px solid var(--line);}
+  .tbl td{padding:13px 20px;border-bottom:1px solid var(--panel-2);vertical-align:top;font-size:14px;}
+  .tbl tr:last-child td{border-bottom:none;}
+  .tbl .cat{font-family:var(--disp);font-weight:600;color:var(--ink);white-space:nowrap;width:34%;}
+  .tbl .tools{color:#33414f;font-family:var(--mono);font-size:12.5px;}
+
+  .assess{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .assess .card{padding:20px;}
+  .assess .pct{font-family:var(--disp);font-weight:700;font-size:32px;color:var(--blueprint);line-height:1;}
+  .assess .nm{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:8px 0 6px;}
+  .assess .ds{font-size:13.5px;color:var(--muted);}
+  .outcome{background:var(--blueprint);color:#fff;border-radius:var(--radius);padding:28px 30px;box-shadow:var(--shadow-lift);position:relative;overflow:hidden;}
+  .outcome::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:30px 30px;pointer-events:none;}
+  .outcome h4{font-family:var(--disp);font-weight:600;font-size:19px;margin:0 0 12px;position:relative;}
+  .outcome p{font-size:14.5px;line-height:1.65;margin:0;color:#dfe8f5;position:relative;max-width:82ch;}
+
+  footer{border-top:1px solid var(--line);padding:32px 0 60px;margin-top:16px;}
+  .foot-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
+  .foot-inner .note{font-size:13px;color:var(--muted);max-width:64ch;}
+  .foot-inner .sig{font-family:var(--mono);font-size:12px;color:var(--faint);}
+
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease;}
+  .rv.in{opacity:1;transform:none;}
+
+  @media (max-width:900px){ .navlinks{display:none;} }
+  @media (max-width:820px){
+    .pipeline{grid-template-columns:1fr 1fr;} .phase .arrow{display:none;}
+    .grid2,.assess,.objgrid{grid-template-columns:1fr;}
+    .mod-top{grid-template-columns:auto 1fr;grid-template-areas:"id head" "right right";row-gap:12px;}
+    .mod-id{grid-area:id;} .mod-heading{grid-area:head;} .mod-right{grid-area:right;justify-content:flex-start;}
+    .day-band{flex-direction:column;align-items:flex-start;gap:10px;} .day-band .theme{margin-left:0;text-align:left;}
+    .meta{flex-basis:calc(50% - 1px);}
+    .tbl .cat{white-space:normal;}
+    .brand span.full{display:none;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} .rv{transition:none;opacity:1;transform:none;} .chev{transition:none;}}
+  @media print{.topbar{display:none;} .hero::before,.day-band::after,.outcome::after{display:none;} body{background:#fff;} .mod-body{display:block!important;} .chev{display:none;} .mod,.card,.phase{box-shadow:none;break-inside:avoid;} section{padding:16px 0;} .rv{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <span class="brand"><span class="dot"></span><span id="brandtxt">SQA · BENGKEL AMALI</span></span>
+    <nav class="navlinks" id="navlinks"></nav>
+    <div class="langswitch" role="group" aria-label="Language">
+      <button data-lang="ms" class="active" onclick="setLang('ms')">BM</button>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn-print" id="printbtn" onclick="window.print()">Cetak / PDF</button>
+  </div>
+</div>
+
+<main id="app"></main>
+
+<script>
+/* ---------------- CONTENT (one clean source per language) ---------------- */
+const CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
+const PCV = {foundation:'var(--blueprint)',plan:'var(--plan)',build:'var(--build)',verify:'var(--verify)',assure:'var(--assure)',sustain:'var(--sustain)',all:'var(--blueprint)'};
+
+const UI = {
+  ms:{
+    brand:"SQA · BENGKEL AMALI", print:"Cetak / PDF",
+    nav:[["#objektif","Objektif"],["#aliran","Aliran"],["#krisa","KRISA"],["#hari1","Hari 1"],["#hari2","Hari 2"],["#alatan","Alatan"],["#penilaian","Penilaian"],["#jurulatih","Jurulatih"]],
+    labels:{obj:"Objektif",topics:"Topik ringkas",lab:"Makmal amali",activity:"Aktiviti amali",team:"Langkah pasukan (10)",tools:"Alatan",out:"OUTPUT →",module:"MODUL",capstone:"CAPSTONE",
+      phase:{foundation:"Asas",plan:"Rancang",build:"Bina-Dalam",verify:"Sah",assure:"Jamin",sustain:"Kekal",all:"Semua fasa"}}
+  },
+  en:{
+    brand:"SQA · HANDS-ON WORKSHOP", print:"Print / PDF",
+    nav:[["#objektif","Objectives"],["#aliran","Flow"],["#krisa","KRISA"],["#hari1","Day 1"],["#hari2","Day 2"],["#alatan","Tools"],["#penilaian","Assessment"],["#jurulatih","Trainer"]],
+    labels:{obj:"Objective",topics:"Key topics",lab:"Hands-on lab",activity:"Hands-on activity",team:"Team steps (10)",tools:"Tools",out:"OUTPUT →",module:"MODULE",capstone:"CAPSTONE",
+      phase:{foundation:"Foundation",plan:"Plan",build:"Build-in",verify:"Verify",assure:"Assure",sustain:"Sustain",all:"All phases"}}
+  }
+};
+
+const HERO = {
+  ms:{
+    eyebrow:"2 Hari · Dipimpin Instruktur · Amali (Hands-On)",
+    h1:'Menguasai <span class="hl">Jaminan Kualiti Perisian (SQA)</span> moden — dipraktikkan hujung ke hujung.',
+    lede:'Dua hari. <strong>Satu projek sebenar.</strong> Setiap aktiviti SQA — dari <strong>perancangan kualiti</strong> hingga <strong>pemantauan</strong> produksi — dipraktikkan sebagai satu aliran kerja berterusan pada satu projek (<strong>ShopFast checkout</strong>). Setiap sesi makmal menyuap sesi seterusnya, jadi anda pulang dengan jejak kualiti lengkap yang anda bina sendiri. Langkah dibuat ringkas supaya senang diikuti. Diselaraskan dengan KRISA 2.0 (JDN) untuk sektor awam.',
+    tags:["Selaras KRISA 2.0 (JDN)","Shift-Left Testing","Shift-Right Testing","Agile QA","DevOps","CI/CD Quality Gates","Test Automation","Continuous Quality"],
+    meta:[["Tempoh","2","hari · 16 jam"],["Format","~80%","amali"],["Modul","8","+ capstone"],["Hasil kerja","12+","dokumen"]]
+  },
+  en:{
+    eyebrow:"2 Days · Instructor-Led · Hands-On",
+    h1:'Mastering modern <span class="hl">Software Quality Assurance</span> — practiced end-to-end.',
+    lede:'Two days. <strong>One real project.</strong> Every SQA activity — from <strong>QA Planning</strong> to production <strong>Monitoring</strong> — is practiced as one continuous workflow on a single project (<strong>ShopFast checkout</strong>). Each lab feeds the next, so you leave with a complete quality trail you built yourself. Steps are kept simple to follow. Aligned to KRISA 2.0 (JDN) for the public sector.',
+    tags:["KRISA 2.0-aligned (JDN)","Shift-Left Testing","Shift-Right Testing","Agile QA","DevOps","CI/CD Quality Gates","Test Automation","Continuous Quality"],
+    meta:[["Duration","2","days · 16 hrs"],["Format","~80%","hands-on"],["Modules","8","+ capstone"],["Deliverables","12+","artifacts"]]
+  }
+};
+
+const OBJ = {
+  ms:{title:"Objektif pembelajaran", sub:"Di akhir bengkel, peserta mampu menerapkan kualiti merentas keseluruhan SDLC — bukan sekadar menguji di penghujung.",
+    items:[
+      "Terangkan prinsip kualiti perisian & peranan SQA dalam SDLC dan Agile.",
+      "Bezakan QA lawan QC serta Verification lawan Validation.",
+      "Bangunkan strategi QA, Pelan Kualiti dan metrik kualiti.",
+      "Jalankan Semakan Keperluan & Semakan Reka Bentuk untuk mencegah kecacatan awal.",
+      "Guna pengujian berasaskan risiko & bina pelan ujian lengkap.",
+      "Reka kes ujian dengan teknik black-box & white-box.",
+      "Laksanakan pengujian fungsian & bukan fungsian.",
+      "Urus kecacatan dan guna metrik kualiti yang bermakna.",
+      "Guna RTM untuk keterjejakan & automasi ujian asas (Selenium / Playwright).",
+      "Guna standard, audit & pematuhan; urus perubahan & pemantauan produksi."]},
+  en:{title:"Learning objectives", sub:"By the end of the workshop, participants can embed quality across the entire SDLC — not just test at the end.",
+    items:[
+      "Explain software quality principles & the role of SQA in the SDLC and Agile.",
+      "Distinguish QA vs QC and Verification vs Validation.",
+      "Build a QA strategy, Quality Plan and quality metrics.",
+      "Run Requirement Reviews & Design Reviews to prevent defects early.",
+      "Apply risk-based testing & build a complete test plan.",
+      "Design test cases with black-box & white-box techniques.",
+      "Execute functional & non-functional testing.",
+      "Manage defects and use meaningful quality metrics.",
+      "Use an RTM for traceability & basic test automation (Selenium / Playwright).",
+      "Apply standards, audits & compliance; manage change & production monitoring."]}
+};
+
+const PIPE = {
+  ms:{title:"Benang penghubung: 5 fasa kualiti", sub:"Sembilan aktiviti SQA disusun mengikut lima fasa penyampaian sebenar. Anda menggerakkan satu ciri (ShopFast) dari kiri ke kanan — mengikut susunan kualiti mengalir dalam projek sebenar.",
+    phases:[["plan","01 · RANCANG","Tetapkan","Tetapkan standard, skop & proses sebelum apa-apa dinilai."],
+      ["build","02 · BINA-DALAM","Cegah","Tangkap kecacatan dalam keperluan & reka bentuk — paling murah dibaiki."],
+      ["verify","03 · SAH","Uji","Reka, laksana & automasikan ujian; log dan triage kecacatan."],
+      ["assure","04 · JAMIN","Bukti","Audit ikut standard & dokumentasikan bukti untuk release."],
+      ["sustain","05 · KEKAL","Kawal","Urus perubahan & pantau kestabilan selepas sistem live."]]},
+  en:{title:"The through-line: five quality phases", sub:"The nine SQA activities map onto five phases of a real delivery. You move one feature (ShopFast) left-to-right — the order quality flows in a live project.",
+    phases:[["plan","01 · PLAN","Define","Set the standards, scope & process before anything is judged."],
+      ["build","02 · BUILD-IN","Prevent","Catch defects in requirements & design — cheapest to fix."],
+      ["verify","03 · VERIFY","Test","Design, run & automate tests; log and triage defects."],
+      ["assure","04 · ASSURE","Prove","Audit against a standard & document the evidence for release."],
+      ["sustain","05 · SUSTAIN","Control","Govern changes & monitor stability once the system is live."]]}
+};
+
+/* KRISA 2.0 (Beta 2026) alignment — Kejuruteraan Sistem Aplikasi Sektor Awam, JDN */
+const KRISA = {
+  ms:{
+    title:"Penjajaran dengan KRISA 2.0 (Beta 2026)",
+    sub:"Bengkel ini diselaraskan dengan KRISA 2.0 Versi Beta 2026 — Buku Kejuruteraan Sistem Aplikasi Sektor Awam oleh Jabatan Digital Negara (JDN). Versi 2.0 menyusun pembangunan kepada fasa Perancangan → Permulaan → Analisis → Reka Bentuk → Pembangunan → Pengujian Penerimaan → Pelaksanaan, serta menambah bab baharu Penyelarasan berasaskan DevOps (pemetaan KRISA ↔ PPrISA ↔ DevOps).",
+    intro:"Setiap makmal ShopFast dipetakan ke fasa & serahan KRISA 2.0. Penekanan DevOps versi 2.0 (automasi, CI/CD, pemantauan) sejajar terus dengan Modul 5 & 8 bengkel ini.",
+    head:["Bab / Fasa KRISA 2.0","Aktiviti utama","Serahan utama","Modul bengkel"],
+    rows:[
+      ["Bab 1 · Perancangan","Perancangan pembangunan sistem; tadbir urus projek (PPrISA)","Pelan Pengurusan Projek (PPP)","Modul 1"],
+      ["Bab 2 · Permulaan","Kajian keperluan bisnes; fungsi & proses bisnes","Spesifikasi Keperluan Bisnes — BRS (D2.1)","Modul 1–2"],
+      ["Bab 3 · Analisis","Use Case; DFD; ERD; keperluan bukan fungsian","Spesifikasi Keperluan Sistem — SRS","Modul 2"],
+      ["Bab 4 · Reka Bentuk","Arkitektur; pangkalan data; antara muka; migrasi & integrasi","Spesifikasi Reka Bentuk Sistem — SDS","Modul 3"],
+      ["Bab 5 · Pembangunan","Pembangunan pangkalan data; pengaturcaraan; pengujian sistem","Laporan Ujian Sistem","Modul 4–6"],
+      ["Bab 6 · Pengujian Penerimaan","Pelan Induk Pengujian; UAT & PAT","Laporan Ujian Penerimaan (UAT/PAT)","Modul 4, 7"],
+      ["Bab 7 · Pelaksanaan","FAT; migrasi data; manual pengguna; serahan sistem","Laporan Penamatan; Manual; Serahan","Modul 7–8"],
+      ["Bab 8 · Penyelarasan DevOps","Automasi, CI/CD, pemantauan; pemetaan KRISA ↔ PPrISA ↔ DevOps; Log Perubahan","Pipeline & metrik kualiti berterusan","Modul 5, 8"]
+    ],
+    considTitle:"Pertimbangan utama kejayaan (KRISA)",
+    consid:["Tadbir Urus Pengurusan Projek ICT","Penglibatan Pemegang Taruh","Pengurusan Kawalan Pindaan & Risiko","Jaminan Kualiti Perisian (SQA)","Faktor Keselamatan ICT","Penyelarasan DevOps (automasi & pemantauan)"],
+    relTitle:"Rujukan JDN berkaitan",
+    rel:["Buku Panduan KRISA 2.0 Beta 2026 (Bab 1–8)","PPrISA — Pengurusan Projek ICT Sektor Awam","Software Quality Management using DevOps","Senarai Templat Dokumen KRISA 2.0 (Beta)"],
+    note:"Rujukan: Portal SQA Sektor Awam, JDN — sqa.jdn.gov.my. Berdasarkan KRISA 2.0 Versi Beta 2026 (bab bertarikh 15 Jan 2026). Sebagai versi Beta, penomboran serahan/templat (cth. D2.1, Tx.y) masih diperhalusi — KRISA 1.0 kekal garis dasar rasmi sehingga 2.0 dimuktamadkan. Sila sahkan versi dengan agensi anda."
+  },
+  en:{
+    title:"Aligned to KRISA 2.0 (Beta 2026)",
+    sub:"This workshop is aligned to KRISA 2.0 Beta 2026 — the Public-Sector Application Engineering handbook by Jabatan Digital Negara (JDN, Malaysia). Version 2.0 restructures development into Planning → Initiation → Analysis → Design → Development → Acceptance Testing → Implementation, and adds a new DevOps alignment chapter (mapping KRISA ↔ PPrISA ↔ DevOps).",
+    intro:"Every ShopFast lab is mapped to a KRISA 2.0 phase & deliverable. Version 2.0's DevOps emphasis (automation, CI/CD, monitoring) lines up directly with Modules 5 & 8 of this workshop.",
+    head:["KRISA 2.0 chapter / phase","Key activities","Key deliverable","Workshop module"],
+    rows:[
+      ["Ch.1 · Planning","System development planning; project governance (PPrISA)","Project Management Plan (PPP)","Module 1"],
+      ["Ch.2 · Initiation","Business requirements study; business functions & processes","Business Requirement Spec — BRS (D2.1)","Modules 1–2"],
+      ["Ch.3 · Analysis","Use Case; DFD; ERD; non-functional requirements","System Requirement Spec — SRS","Module 2"],
+      ["Ch.4 · Design","Architecture; database; UI; migration & integration","System Design Spec — SDS","Module 3"],
+      ["Ch.5 · Development","Database build; application coding; system testing","System Test Report","Modules 4–6"],
+      ["Ch.6 · Acceptance Testing","Master Test Plan; UAT & PAT","Acceptance Test Report (UAT/PAT)","Modules 4, 7"],
+      ["Ch.7 · Implementation","FAT; data migration; user manual; system handover","Test Closure; Manual; Handover","Modules 7–8"],
+      ["Ch.8 · DevOps Alignment","Automation, CI/CD, monitoring; KRISA ↔ PPrISA ↔ DevOps mapping; Change Log","Continuous quality pipeline & metrics","Modules 5, 8"]
+    ],
+    considTitle:"Key success considerations (KRISA)",
+    consid:["ICT Project Management Governance","Stakeholder Involvement","Change & Risk Control Management","Software Quality Assurance (SQA)","ICT Security","DevOps Alignment (automation & monitoring)"],
+    relTitle:"Related JDN guidelines",
+    rel:["KRISA 2.0 Beta 2026 Handbook (Ch.1–8)","PPrISA — Public-Sector ICT Project Management","Software Quality Management using DevOps","KRISA 2.0 Document Template List (Beta)"],
+    note:"Source: Public-Sector SQA Portal, JDN — sqa.jdn.gov.my. Based on KRISA 2.0 Beta 2026 (chapters dated 15 Jan 2026). As a Beta, deliverable/template numbering (e.g. D2.1, Tx.y) is still being refined — KRISA 1.0 remains the official baseline until 2.0 is finalized. Please confirm the version with your agency."
+  }
+};
+
+/* schedule: language-neutral structure, per-language text inside */
+const SCHED = {
+  day1:{
+    band:{tag:{ms:"HARI 01",en:"DAY 01"}, title:{ms:"Membina Kualiti Sebelum Pembinaan",en:"Building Quality Before Development"},
+      lbl:{ms:"Fokus",en:"Focus"}, val:{ms:"Shift-Left · Rancang → Cegah → mula Uji",en:"Shift-Left · Plan → Prevent → begin Verify"}},
+    items:[
+      {kind:"break",time:"09:00",text:{ms:"Aluan & pengenalan bengkel · ice-breaker · pra-penilaian · 30 min",en:"Welcome & workshop introduction · ice-breaker · pre-assessment · 30 min"}},
+      {kind:"module",n:1,phase:"foundation",open:true,labKind:"activity",
+        title:{ms:"Minda Kualiti (The Quality Mindset)",en:"The Quality Mindset"},
+        sub:{ms:"09:30–11:00 · Kualiti tanggungjawab semua",en:"09:30–11:00 · Quality is everyone's job"},
+        dur:"1j 30m / 1h 30m",
+        obj:{ms:"Fahami mengapa kualiti tanggungjawab semua orang, dan di mana kedudukan SQA dalam SDLC & Agile.",en:"Understand why quality is everyone's responsibility, and where SQA fits in the SDLC & Agile."},
+        topics:{ms:["Asas kualiti perisian","QA lawan QC","Verification lawan Validation","Pengujian lawan Pemeriksaan","SDLC lawan STLC","Shift-Left / Shift-Right","Continuous Quality","DevOps Quality"],
+                en:["Software quality basics","QA vs QC","Verification vs Validation","Testing vs Inspection","SDLC vs STLC","Shift-Left / Shift-Right","Continuous Quality","DevOps Quality"]},
+        steps:{ms:["Dalam kumpulan, senaraikan 3 kegagalan perisian sebenar & punca kualitinya.","Lakar 'Cost of Poor Quality' — kos membaiki pepijat di setiap fasa SDLC.","Tandakan di mana Shift-Left boleh menangkap setiap kecacatan lebih awal, guna projek ShopFast."],
+               en:["In groups, list 3 real software failures and their quality root causes.","Sketch the 'Cost of Poor Quality' — the cost of fixing a bug at each SDLC phase.","Mark where Shift-Left could catch each defect earlier, using the ShopFast project."]},
+        out:{ms:"Peta ringkas 'di mana kualiti bermula' untuk ShopFast + glosari QA lawan QC / V&V pasukan.",en:"A short 'where quality begins' map for ShopFast + a team QA-vs-QC / V&V glossary."}},
+      {kind:"break",time:"11:00",text:{ms:"Rehat Pagi · 15 min",en:"Morning Break · 15 min"}},
+      {kind:"module",n:2,phase:"plan",labKind:"lab",
+        title:{ms:"Perancangan QA & Kualiti Proaktif",en:"QA Planning & Proactive Quality"},
+        sub:{ms:"11:15–13:00 · Perancangan QA + Semakan Keperluan",en:"11:15–13:00 · QA Planning + Requirement Review"},
+        dur:"1j 45m / 1h 45m",
+        obj:{ms:"Bina kualiti sebelum pengekodan bermula — hasilkan Pelan QA, semak keperluan, dan mula RTM.",en:"Build quality before coding begins — produce a QA Plan, review requirements, and start the RTM."},
+        topics:{ms:["Test Strategy","Test Plan","Definition of Ready / Done","Quality Gates","Risk Register","Acceptance Criteria (INVEST)","Static Testing","Function Points (saiz)","BRS · SRS (KRISA)","RTM · Analisis Jurang"],
+                en:["Test Strategy","Test Plan","Definition of Ready / Done","Quality Gates","Risk Register","Acceptance Criteria (INVEST)","Static Testing","Function Points (sizing)","BRS · SRS (KRISA)","RTM · Gap Analysis"]},
+        steps:{ms:["Isi templat Pelan QA untuk ShopFast: skop, entry & exit criteria, Quality Gate.","Semak SRS yang sengaja bercacat; tandakan ambiguity & keperluan yang tak boleh diuji.","Tulis semula 5 keperluan menjadi boleh diuji + Acceptance Criteria (Given/When/Then).","Mula RTM v0 — kaitkan setiap keperluan dengan satu ID."],
+               en:["Fill a QA Plan template for ShopFast: scope, entry & exit criteria, Quality Gate.","Review a deliberately flawed SRS; flag ambiguity & untestable requirements.","Rewrite 5 requirements into testable form + Acceptance Criteria (Given/When/Then).","Start the RTM v0 — link each requirement to an ID."]},
+        tools:{ms:["Templat Pelan QA","Contoh SRS","Senarai semak semakan","RTM (Sheet)","Jira / Confluence"],
+               en:["QA Plan template","Sample SRS","Review checklist","RTM (Sheet)","Jira / Confluence"]},
+        out:{ms:"Pelan QA + Laporan Semakan Keperluan + RTM v0 — dibawa ke setiap modul seterusnya. Selaras KRISA 2.0: BRS (D2.1) & SRS.",en:"QA Plan + Requirement Review Report + RTM v0 — carried into every later module. KRISA 2.0-aligned: BRS (D2.1) & SRS."}},
+      {kind:"break",time:"13:00",text:{ms:"Makan Tengah Hari · 60 min",en:"Lunch · 60 min"}},
+      {kind:"module",n:3,phase:"build",labKind:"lab",
+        title:{ms:"Semakan Reka Bentuk & Perancangan Ujian Berasaskan Risiko",en:"Design Review & Risk-Based Test Planning"},
+        sub:{ms:"14:00–15:30 · Semakan Reka Bentuk",en:"14:00–15:30 · Design Review"},
+        dur:"1j 30m / 1h 30m",
+        obj:{ms:"Nilai reka bentuk sistem sebelum pembinaan, dan rancang pengujian berdasarkan risiko.",en:"Evaluate the system design before development, and plan testing based on risk."},
+        topics:{ms:["Semakan Architecture / API / Database","Semakan Keselamatan","OWASP Top 10","Threat Modeling","Risk Matrix","Keutamaan Ujian","Perancangan Liputan"],
+                en:["Architecture / API / Database Review","Security Review","OWASP Top 10","Threat Modeling","Risk Matrix","Test Prioritization","Coverage Planning"]},
+        steps:{ms:["Kaji architecture diagram & kontrak API (OpenAPI) untuk ShopFast.","Guna Senarai Semak Reka Bentuk: kebolehujian, pengendalian ralat, keselamatan asas.","Bina Risk Matrix (kebarangkalian × impak) & tetapkan keutamaan ujian."],
+               en:["Study the ShopFast architecture diagram & API contract (OpenAPI).","Use a Design Review Checklist: testability, error handling, basic security.","Build a Risk Matrix (likelihood × impact) & set test priorities."]},
+        tools:{ms:["Architecture diagram","OpenAPI / Swagger","Senarai semak reka bentuk","Risk matrix (Sheet)"],
+               en:["Architecture diagram","OpenAPI / Swagger","Design checklist","Risk matrix (Sheet)"]},
+        out:{ms:"Senarai Semak Reka Bentuk + Risk Register + Strategi Ujian Berasaskan Risiko. Selaras KRISA 2.0: SDS.",en:"Design Review Checklist + Risk Register + Risk-Based Test Strategy. KRISA 2.0-aligned: SDS."}},
+      {kind:"break",time:"15:30",text:{ms:"Rehat Petang · 15 min",en:"Afternoon Break · 15 min"}},
+      {kind:"module",n:4,phase:"verify",labKind:"lab",
+        title:{ms:"Reka Bentuk Ujian & Asas Pengurusan Ujian",en:"Test Design & Test Management Fundamentals"},
+        sub:{ms:"15:45–17:00 · Reka & urus ujian",en:"15:45–17:00 · Design & manage tests"},
+        dur:"1j 15m / 1h 15m",
+        obj:{ms:"Reka kes ujian yang berkualiti dan urus pelaksanaan ujian dengan keterjejakan.",en:"Design quality test cases and manage test execution with traceability."},
+        topics:{ms:["Test Levels (Unit → System → UAT → PAT → FAT)","Equivalence Partitioning","Boundary Value Analysis","Decision Table","State Transition","Pelan Induk Pengujian","Liputan white-box","Entry & Exit Criteria"],
+                en:["Test Levels (Unit → System → UAT → PAT → FAT)","Equivalence Partitioning","Boundary Value Analysis","Decision Table","State Transition","Master Test Plan","White-box coverage","Entry & Exit Criteria"]},
+        steps:{ms:["Guna Equivalence Partitioning & Boundary Value Analysis pada medan checkout.","Tulis 15–20 kes ujian (langkah, data, keputusan dijangka) dalam TestRail / Sheet.","Petakan setiap kes ke keperluan dalam RTM (semak liputan)."],
+               en:["Apply Equivalence Partitioning & Boundary Value Analysis to the checkout fields.","Write 15–20 test cases (steps, data, expected result) in TestRail / Sheet.","Map each case to a requirement in the RTM (coverage check)."]},
+        tools:{ms:["TestRail / Zephyr / Xray","Jira","Spreadsheet"],en:["TestRail / Zephyr / Xray","Jira","Spreadsheet"]},
+        out:{ms:"Pelan Ujian + 15–20 kes ujian dipetakan ke RTM. Selaras KRISA 2.0: Pelan Induk Pengujian.",en:"Test Plan + 15–20 test cases mapped to the RTM. KRISA 2.0-aligned: Master Test Plan."}},
+      {kind:"break",time:"17:00",text:{ms:"Retrospektif Hari 1 — apa yang dijumpai, apa yang dibawa ke Hari 2",en:"Day 1 retrospective — what we found, what carries into Day 2"}}
+    ]
+  },
+  day2:{
+    band:{tag:{ms:"HARI 02",en:"DAY 02"}, title:{ms:"Ujian, Kualiti Berterusan & Jaminan Produksi",en:"Testing, Continuous Quality & Production Assurance"},
+      lbl:{ms:"Fokus",en:"Focus"}, val:{ms:"Automasi → Bukti → Kawal & pantau",en:"Automate → Prove → Control & monitor"}},
+    items:[
+      {kind:"module",n:5,phase:"verify",open:true,labKind:"lab",
+        title:{ms:"Pengujian Perisian & Automasi Ujian",en:"Software Testing & Test Automation"},
+        sub:{ms:"09:00–10:30 · Pengujian Perisian",en:"09:00–10:30 · Software Testing"},
+        dur:"1j 30m / 1h 30m",
+        obj:{ms:"Laksanakan pengujian berkesan (fungsian & bukan fungsian) dan fahami strategi automasi.",en:"Execute effective testing (functional & non-functional) and understand automation strategy."},
+        topics:{ms:["Smoke / Sanity / Regression / Exploratory","Performance / Load / Stress","Keselamatan · Kebolehcapaian","Automation Pyramid","Integrasi CI/CD"],
+                en:["Smoke / Sanity / Regression / Exploratory","Performance / Load / Stress","Security · Accessibility","Automation Pyramid","CI/CD Integration"]},
+        labs:{ms:[{sub:"// Lab A — Pengujian API",steps:["Bina Postman collection untuk API checkout dari OpenAPI spec.","Tambah assertions: status code, response schema & response time.","Run collection tanpa UI guna Newman & baca laporan."]},
+                 {sub:"// Lab B — Automasi UI",steps:["Tulis ujian Playwright (atau Selenium + pytest) pertama untuk log masuk → checkout.","Tambah assertion pada skrin pengesahan pesanan; pastikan ia stabil.","Run, lihat ia lulus; kemudian rosakkan app dan lihat ia gagal dengan jelas."]}],
+              en:[{sub:"// Lab A — API testing",steps:["Build a Postman collection for the checkout API from the OpenAPI spec.","Add assertions: status code, response schema & response time.","Run the collection headless with Newman & read the report."]},
+                 {sub:"// Lab B — UI automation",steps:["Write your first Playwright (or Selenium + pytest) test for login → checkout.","Add an assertion on the order-confirmation screen; make it stable.","Run it and watch it pass; then break the app and watch it fail clearly."]}]},
+        tools:{ms:["Postman + Newman","Playwright","Selenium / Cypress","JMeter / k6 (demo)","OWASP ZAP (demo)"],
+               en:["Postman + Newman","Playwright","Selenium / Cypress","JMeter / k6 (demo)","OWASP ZAP (demo)"]},
+        out:{ms:"Postman collection dengan tests + 1 skrip automasi UI yang lulus. Menyokong KRISA 2.0 (Bab 5 & DevOps): Laporan Ujian Sistem.",en:"A Postman collection with tests + one passing UI automation script. Supports KRISA 2.0 (Ch.5 & DevOps): System Test Report."}},
+      {kind:"break",time:"10:30",text:{ms:"Rehat Pagi · 15 min",en:"Morning Break · 15 min"}},
+      {kind:"module",n:6,phase:"verify",labKind:"lab",
+        title:{ms:"Pengurusan Pepijat & Metrik Kualiti",en:"Bug Management & Quality Metrics"},
+        sub:{ms:"10:45–12:30 · Pengurusan Pepijat",en:"10:45–12:30 · Bug Management"},
+        dur:"1j 45m / 1h 45m",
+        obj:{ms:"Jejak, klasifikasi dan urus pepijat dengan berkesan — serta fahami metrik kualiti.",en:"Track, classify and manage defects effectively — and understand quality metrics."},
+        topics:{ms:["Defect Lifecycle","Severity lawan Priority","Root Cause Analysis (RCA)","Defect Density · Leakage","MTTR · MTBF","Defect Removal Efficiency"],
+                en:["Defect Lifecycle","Severity vs Priority","Root Cause Analysis (RCA)","Defect Density · Leakage","MTTR · MTBF","Defect Removal Efficiency"]},
+        steps:{ms:["Hasilkan semula pepijat yang ditanam dalam demo app; sahkan langkah repro.","Log 5 laporan pepijat berkualiti: langkah, dijangka lawan sebenar, severity/priority, bukti.","Buat triage & gerakkan tiket: Open → In Progress → Fixed → Verified → Closed.","Kira metrik ringkas: Defect Density & kadar lulus."],
+               en:["Reproduce seeded bugs in the demo app; confirm the repro steps.","Log 5 high-quality bug reports: steps, expected vs actual, severity/priority, evidence.","Triage & move tickets: Open → In Progress → Fixed → Verified → Closed.","Compute simple metrics: Defect Density & pass rate."]},
+        tools:{ms:["Jira / GitHub Issues","Azure DevOps / GitLab","Templat pepijat","Helaian metrik"],
+               en:["Jira / GitHub Issues","Azure DevOps / GitLab","Bug template","Metrics sheet"]},
+        out:{ms:"5 laporan pepijat + papan triage yang bergerak + metrik kualiti asas.",en:"5 defect reports + a moving triage board + basic quality metrics."}},
+      {kind:"break",time:"12:30",text:{ms:"Makan Tengah Hari · 60 min",en:"Lunch · 60 min"}},
+      {kind:"module",n:7,phase:"assure",labKind:"lab",
+        title:{ms:"Audit, Pematuhan & Dokumentasi Kualiti",en:"Audit, Compliance & Quality Documentation"},
+        sub:{ms:"13:30–15:00 · Audit & Pematuhan + Dokumentasi",en:"13:30–15:00 · Audit & Compliance + Documentation"},
+        dur:"1j 30m / 1h 30m",
+        obj:{ms:"Pastikan proses kualiti patuh standard dan hasilkan dokumentasi berkesan untuk keputusan release.",en:"Ensure the quality process complies with standards and produce effective documentation for the release decision."},
+        topics:{ms:["ISO 9001","ISO/IEC 25010","ISO/IEC 29119","CMMI","OWASP ASVS","Release Readiness Review","Test Summary Report","Release Notes · Lessons Learned"],
+                en:["ISO 9001","ISO/IEC 25010","ISO/IEC 29119","CMMI","OWASP ASVS","Release Readiness Review","Test Summary Report","Release Notes · Lessons Learned"]},
+        steps:{ms:["Audit artifak semalam (Pelan QA, RTM, bukti ujian) ikut senarai semak ISO / CMMI-lite.","Rekod penemuan sebagai conformity / non-conformity + tindakan pembetulan (CAPA).","Susun Test Summary Report + cadangan release (go / no-go / bersyarat)."],
+               en:["Audit yesterday's artifacts (QA Plan, RTM, test evidence) against an ISO / CMMI-lite checklist.","Record findings as conformity / non-conformity + corrective actions (CAPA).","Compile a Test Summary Report + release recommendation (go / no-go / conditional)."]},
+        tools:{ms:["Senarai semak audit","Rujukan ISO / CMMI","Templat Test Summary","Confluence / Markdown"],
+               en:["Audit checklist","ISO / CMMI reference","Test Summary template","Confluence / Markdown"]},
+        out:{ms:"Laporan Audit ringkas + CAPA + Test Summary Report (pakej dokumentasi QA). Selaras KRISA 2.0: Laporan UAT/PAT & Laporan Penamatan Ujian.",en:"A mini Audit Report + CAPA + Test Summary Report (QA documentation package). KRISA 2.0-aligned: UAT/PAT Report & Test Closure Report."}},
+      {kind:"break",time:"15:00",text:{ms:"Rehat Petang · 15 min",en:"Afternoon Break · 15 min"}},
+      {kind:"module",n:8,phase:"sustain",labKind:"lab",
+        title:{ms:"Pengurusan Perubahan, Pemantauan & Kualiti Berterusan",en:"Change Management, Monitoring & Continuous Quality"},
+        sub:{ms:"15:15–16:30 · Pengurusan Perubahan + Pemantauan",en:"15:15–16:30 · Change Management + Monitoring"},
+        dur:"1j 15m / 1h 15m",
+        obj:{ms:"Kekalkan kualiti selepas penggunaan melalui kawalan perubahan dan pemantauan produksi.",en:"Sustain quality after deployment through controlled change and production monitoring."},
+        topics:{ms:["Change Request · Impact Analysis","Change Advisory Board (CAB)","Rollback · Perancangan Regression","Logging / Monitoring / Alerting","Observability","SLA · SLI · SLO","PDCA · Kaizen"],
+                en:["Change Request · Impact Analysis","Change Advisory Board (CAB)","Rollback · Regression Planning","Logging / Monitoring / Alerting","Observability","SLA · SLI · SLO","PDCA · Kaizen"]},
+        steps:{ms:["Change request masuk ('tambah discount code di checkout'); log di borang Change Control.","Guna RTM untuk Impact Analysis — kes mana terjejas? Pilih regression minimum + rancang rollback.","Masukkan ujian automasi ke GitHub Actions sebagai Quality Gate.","Baca dashboard Grafana: Defect Density, kadar lulus, MTTR, uptime; tetapkan ambang alert."],
+               en:["A change request arrives ('add discount codes to checkout'); log it on a Change Control form.","Use the RTM for Impact Analysis — which cases are affected? Pick a minimal regression + plan rollback.","Add the automation tests to GitHub Actions as a Quality Gate.","Read a Grafana dashboard: Defect Density, pass rate, MTTR, uptime; set alert thresholds."]},
+        tools:{ms:["Borang change request","GitHub Actions","Grafana / Prometheus / ELK","RTM"],
+               en:["Change request form","GitHub Actions","Grafana / Prometheus / ELK","RTM"]},
+        out:{ms:"Change Request + Impact Analysis + pelan rollback + CI Quality Gate + dashboard metrik. Menyokong KRISA 2.0 Bab 7–8 (DevOps) & Kawalan Pindaan.",en:"Change Request + Impact Analysis + rollback plan + CI Quality Gate + metrics dashboard. Supports KRISA 2.0 Ch.7–8 (DevOps) & Change Control."}},
+      {kind:"module",capstone:true,phase:"all",labKind:"team",
+        title:{ms:"Latihan Kemuncak & Penutup Kursus",en:"Capstone Exercise & Course Wrap-Up"},
+        sub:{ms:"16:30–17:30 · Kajian kes enterprise berpasukan",en:"16:30–17:30 · Team enterprise case study"},
+        dur:"1j 00m / 1h 00m",
+        obj:{ms:"Satukan semua kemahiran: setiap pasukan menggerakkan satu kajian kes enterprise dari keperluan hingga pemantauan, kemudian membentangkannya.",en:"Bring every skill together: each team drives one enterprise case study from requirements to monitoring, then presents it."},
+        steps:{ms:["Semak keperluan perniagaan kajian kes.","Bangunkan Pelan QA & Risk Register.","Jalankan Semakan Keperluan & Semakan Reka Bentuk.","Bina RTM & Strategi Ujian Berasaskan Risiko.","Reka & laksana kes ujian fungsian + bukan fungsian.","Log & utamakan pepijat (severity / priority).","Hasilkan Test Execution Report & dokumentasi QA.","Buat audit kualiti ikut standard ISO/IEC & organisasi.","Nilai change request produksi & pelan rollback.","Cadangkan metrik pemantauan & tindakan penambahbaikan berterusan."],
+               en:["Review the case study business requirements.","Develop a QA Plan & Risk Register.","Conduct Requirement Review & Design Review.","Build the RTM & Risk-Based Test Strategy.","Design & execute functional + non-functional test cases.","Log & prioritize defects (severity / priority).","Produce a Test Execution Report & QA documentation.","Perform a quality audit against ISO/IEC & organizational standards.","Evaluate a production change request & rollback plan.","Recommend monitoring metrics & continuous improvement actions."]},
+        out:{ms:"Pembentangan pasukan + maklum balas instruktur + refleksi peserta + penilaian kursus + sijil.",en:"Team presentation + instructor feedback + participant reflection + course evaluation + certificate."}}
+    ]
+  }
+};
+
+const TOOLS = {
+  ms:{title:"Alatan disyorkan", sub:"Semua alatan bertaraf industri dan boleh ditukar mengikut stack pasukan anda (cth. Selenium ganti Playwright, GitLab CI ganti GitHub Actions).",
+    head:["Kategori","Alatan"],
+    rows:[["Requirements","Azure DevOps · Jira"],["Test Management","TestRail · Zephyr · Xray"],["Bug Tracking","Jira · GitHub Issues · Azure DevOps · GitLab"],["API Testing","Postman · Insomnia"],["UI Automation","Selenium · Playwright · Cypress"],["Performance Testing","Apache JMeter · k6"],["Security Testing","OWASP ZAP · Burp Suite Community"],["Code Quality","SonarQube"],["CI/CD","Jenkins · GitHub Actions · GitLab CI"],["Monitoring","Grafana · Prometheus · ELK Stack · Datadog · New Relic"],["Documentation","Confluence · Microsoft Word · Markdown"]]},
+  en:{title:"Recommended tools", sub:"All tools are industry-standard and can be swapped to match your stack (e.g., Selenium for Playwright, GitLab CI for GitHub Actions).",
+    head:["Category","Tools"],
+    rows:[["Requirements","Azure DevOps · Jira"],["Test Management","TestRail · Zephyr · Xray"],["Bug Tracking","Jira · GitHub Issues · Azure DevOps · GitLab"],["API Testing","Postman · Insomnia"],["UI Automation","Selenium · Playwright · Cypress"],["Performance Testing","Apache JMeter · k6"],["Security Testing","OWASP ZAP · Burp Suite Community"],["Code Quality","SonarQube"],["CI/CD","Jenkins · GitHub Actions · GitLab CI"],["Monitoring","Grafana · Prometheus · ELK Stack · Datadog · New Relic"],["Documentation","Confluence · Microsoft Word · Markdown"]]}
+};
+
+const SETUP = {
+  ms:{title:"Persediaan, peserta & kaedah", sub:"Makmal bermula dalam jam pertama, jadi persekitaran perlu siap pada Hari 1. Demo app & akaun disediakan awal untuk hapuskan kerumitan pemasangan.",
+    env:["Laptop dengan hak admin, RAM 8 GB+","Node.js LTS & Python 3.x","VS Code + Git","Akaun Postman (desktop atau web)","Akaun GitHub (untuk Issues + Actions)","Akses Jira atau guna GitHub Issues secara lalai","Docker Desktop — jalankan demo app ShopFast secara lokal"],
+    envTitle:"Senarai semak persekitaran", audTitle:"Kumpulan sasaran",
+    aud:["Software Developer · QA / Test Engineer","System Analyst · Business Analyst","Project Manager · Product Owner","DevOps Engineer · Technical Lead · IT Manager"],
+    prereq:"<strong>Prasyarat:</strong> biasa dengan aplikasi web & penggunaan terminal asas. Tiada pengalaman automasi diperlukan — Hari 2 bermula dari baris kod pertama.",
+    methodTitle:"Kaedah bengkel", method:["Kuliah interaktif","Perbincangan kumpulan berpandu","Makmal & lab praktikal","Peer review","Kajian kes dunia sebenar","Demo alatan industri","Capstone berpasukan","Q&A & perancangan tindakan"]},
+  en:{title:"Setup, audience & method", sub:"Labs start in the first hour, so environments must be ready on Day 1. A pre-built demo app & accounts remove install friction.",
+    env:["Laptop with admin rights, 8 GB+ RAM","Node.js LTS & Python 3.x","VS Code + Git","Postman account (desktop or web)","GitHub account (for Issues + Actions)","Jira access or GitHub Issues by default","Docker Desktop — run the ShopFast demo app locally"],
+    envTitle:"Environment checklist", audTitle:"Target audience",
+    aud:["Software Developer · QA / Test Engineer","System Analyst · Business Analyst","Project Manager · Product Owner","DevOps Engineer · Technical Lead · IT Manager"],
+    prereq:"<strong>Prerequisite:</strong> comfortable with web apps & basic terminal use. No automation experience needed — Day 2 starts from the first line of code.",
+    methodTitle:"Workshop method", method:["Interactive lectures","Facilitated group discussion","Hands-on labs","Peer review","Real-world case studies","Live tool demos","Team capstone","Q&A & action planning"]}
+};
+
+const ASSESS = {
+  ms:{title:"Cara penilaian", sub:"Penilaian ialah kerja itu sendiri — tiada peperiksaan bertulis. Anda dinilai pada artifak sebenar yang dihasilkan sepanjang dua hari.",
+    cards:[["60%","Artifak makmal","12+ hasil kerja — Pelan QA, RTM, test suite, automasi, laporan pepijat, laporan audit & ringkasan."],["25%","Capstone walkthrough","Bentangkan jejak kualiti penuh ShopFast: dari plan hingga CI gate hijau & dashboard pemantauan."],["15%","Penyertaan","Sumbangan dalam semakan, triage & risk workshop sepanjang dua hari."]],
+    outTitle:"Hasil dijangka",
+    out:"Selepas tamat, peserta mampu menubuh & mentadbir rangka kerja SQA enterprise, menerapkan kualiti merentas SDLC melalui amalan Shift-Left, mereka & melaksana strategi pengujian berasaskan risiko, mengguna test automation, mengurus kecacatan dengan metrik kualiti bermakna, memastikan pematuhan standard yang diiktiraf, mengintegrasi kualiti ke dalam saluran Agile & DevOps, serta mengekalkan kebolehpercayaan perisian melalui pengurusan perubahan, pemantauan produksi dan penambahbaikan berterusan — selaras dengan sembilan aktiviti teras SQA: Perancangan QA, Semakan Keperluan, Semakan Reka Bentuk, Pengujian Perisian, Pengurusan Pepijat, Audit & Pematuhan, Dokumentasi, Pengurusan Perubahan dan Pemantauan."},
+  en:{title:"How you're assessed", sub:"Assessment is the work itself — no written exam. You're evaluated on the real artifacts you produce across the two days.",
+    cards:[["60%","Lab artifacts","12+ deliverables — QA Plan, RTM, test suite, automation, defect reports, audit & summary reports."],["25%","Capstone walkthrough","Present the full ShopFast quality trail: from plan to a green CI gate & monitoring dashboard."],["15%","Participation","Contribution to reviews, triage & the risk workshop across both days."]],
+    outTitle:"Expected outcomes",
+    out:"After completion, participants can establish & govern an enterprise SQA framework, embed quality across the SDLC through Shift-Left practices, design & run risk-based testing strategies, apply test automation, manage defects with meaningful quality metrics, ensure compliance with recognized standards, integrate quality into Agile & DevOps pipelines, and sustain software reliability through change management, production monitoring and continuous improvement — aligned with the nine core SQA activities: QA Planning, Requirement Review, Design Review, Software Testing, Bug Management, Audit & Compliance, Documentation, Change Management and Monitoring."}
+};
+
+const FOOT = {
+  ms:{note:"Setiap modul berjalan atas satu projek dikongsi — <strong>ShopFast checkout</strong> — supaya peserta pulang dengan jejak kualiti lengkap yang berhubung, bukan sembilan latihan berasingan. Langkah makmal sengaja diringkaskan untuk memudahkan hands-on. Diselaraskan dengan KRISA 2.0 (Beta 2026, JDN).", sig:"SQA · BENGKEL AMALI 2 HARI · v5 (KRISA 2.0)"},
+  en:{note:"Every module runs on one shared project — <strong>ShopFast checkout</strong> — so participants leave with a complete, connected quality trail rather than nine separate exercises. Lab steps are deliberately kept simple for easy hands-on. Aligned to KRISA 2.0 (Beta 2026, JDN).", sig:"SQA · 2-DAY HANDS-ON WORKSHOP · v5 (KRISA 2.0)"}
+};
+
+const TRAINER = {
+  ms:{title:"Jurulatih", role:"Jurulatih SQA · Selaras KRISA 2.0 (JDN)", wa:"WhatsApp"},
+  en:{title:"Trainer", role:"SQA Trainer · Aligned to KRISA 2.0 (JDN)", wa:"WhatsApp"}
+};
+
+/* ---------------- RENDER ---------------- */
+function chips(arr){return '<div class="chips">'+arr.map(t=>'<span class="chip">'+t+'</span>').join('')+'</div>';}
+function steps(arr){return '<ol class="steps">'+arr.map(s=>'<li>'+s+'</li>').join('')+'</ol>';}
+function durText(d,lang){const p=d.split(' / ');return lang==='ms'?p[0]:p[1];}
+
+function moduleHTML(m,lang,L){
+  const key = m.capstone?'cap':('m'+m.n);
+  const pc = PCV[m.phase];
+  const idLabel = m.capstone?L.capstone:(L.module+' '+m.n);
+  const phaseLabel = L.phase[m.phase];
+  const labLabel = m.labKind==='activity'?L.activity : m.labKind==='team'?L.team : L.lab;
+  let labBlock='';
+  if(m.labs){
+    labBlock = m.labs[lang].map((g,i)=>'<div class="sublab"'+(i>0?' style="margin-top:12px;"':'')+'>'+g.sub+'</div>'+steps(g.steps)).join('');
+  } else {
+    labBlock = steps(m.steps[lang]);
+  }
+  let inner = '<div class="block"><div class="blabel">'+L.obj+'</div><p>'+m.obj[lang]+'</p></div>';
+  if(m.topics) inner += '<div class="block"><div class="blabel">'+L.topics+'</div>'+chips(m.topics[lang])+'</div>';
+  inner += '<div class="block"><div class="blabel">'+labLabel+'</div>'+labBlock+'</div>';
+  if(m.tools) inner += '<div class="block"><div class="blabel">'+L.tools+'</div>'+chips(m.tools[lang])+'</div>';
+  inner += '<div class="output"><span class="tag">'+L.out+'</span><span class="txt">'+m.out[lang]+'</span></div>';
+  return '<details class="mod rv" data-key="'+key+'"'+(m.open?' open':'')+' style="--pc:'+pc+'">'
+    +'<summary class="mod-top"><span class="mod-id">'+idLabel+'</span>'
+    +'<div class="mod-heading"><h4>'+m.title[lang]+'</h4><div class="my">'+m.sub[lang]+'</div></div>'
+    +'<div class="mod-right"><span class="phase-pill">'+phaseLabel+'</span><span class="dur">'+durText(m.dur,lang)+'</span>'+CHEV+'</div>'
+    +'</summary><div class="mod-body"><div class="mod-body-inner">'+inner+'</div></div></details>';
+}
+function breakHTML(b,lang){return '<div class="brk rv"><span>'+b.time+'</span><span class="ln"></span><span>'+b.text[lang]+'</span></div>';}
+
+function dayHTML(day,lang,L,secId){
+  const b=day.band;
+  let h='<section id="'+secId+'"><div class="wrap">';
+  h+='<div class="day-band rv"><div><div class="day-tag">'+b.tag[lang]+'</div><h3>'+b.title[lang]+'</h3></div>'
+    +'<div class="theme"><div class="lbl">'+b.lbl[lang]+'</div><div class="val">'+b.val[lang]+'</div></div></div>';
+  h+=day.items.map(it=>it.kind==='break'?breakHTML(it,lang):moduleHTML(it,lang,L)).join('');
+  h+='</div></section>';
+  return h;
+}
+
+function render(lang){
+  const L=UI[lang].labels;
+  const hero=HERO[lang], obj=OBJ[lang], pipe=PIPE[lang], tools=TOOLS[lang], setup=SETUP[lang], as=ASSESS[lang], foot=FOOT[lang];
+  let h='';
+
+  // hero
+  h+='<header class="hero"><div class="wrap">'
+    +'<span class="eyebrow rv"><span class="bar"></span>'+hero.eyebrow+'</span>'
+    +'<h1 class="rv">'+hero.h1+'</h1>'
+    +'<p class="lede rv">'+hero.lede+'</p>'
+    +'<div class="modern-tags rv">'+hero.tags.map(t=>'<span class="mtag">'+t+'</span>').join('')+'</div>'
+    +'<div class="meta-strip rv">'+hero.meta.map(m=>'<div class="meta"><div class="k">'+m[0]+'</div><div class="v">'+m[1]+' <small>'+m[2]+'</small></div></div>').join('')+'</div>'
+    +'</div></header>';
+
+  // objectives
+  h+='<section id="objektif"><div class="wrap"><div class="sec-head"><span class="sec-num">00</span><div>'
+    +'<h2 class="sec-title">'+obj.title+'</h2><p class="sec-sub">'+obj.sub+'</p></div></div>'
+    +'<div class="objgrid rv">'+obj.items.map((t,i)=>'<div class="obj"><span class="n">'+(i+1)+'</span><span>'+t+'</span></div>').join('')+'</div>'
+    +'</div></section>';
+
+  // pipeline
+  h+='<section id="aliran"><div class="wrap"><div class="sec-head"><span class="sec-num">01</span><div>'
+    +'<h2 class="sec-title">'+pipe.title+'</h2><p class="sec-sub">'+pipe.sub+'</p></div></div>'
+    +'<div class="pipeline">'+pipe.phases.map(p=>'<div class="phase rv" style="--pc:'+PCV[p[0]]+'"><div class="pn">'+p[1]+'</div><h4>'+p[2]+'</h4><p>'+p[3]+'</p><span class="arrow">→</span></div>').join('')+'</div>'
+    +'</div></section>';
+
+  // krisa alignment
+  const kr=KRISA[lang];
+  h+='<section id="krisa"><div class="wrap"><div class="sec-head"><span class="sec-num">02</span><div>'
+    +'<h2 class="sec-title">'+kr.title+'</h2><p class="sec-sub">'+kr.sub+'</p></div></div>'
+    +'<p class="krisa-intro rv">'+kr.intro+'</p>'
+    +'<div class="tblscroll rv"><table class="tbl"><thead><tr>'+kr.head.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'
+    +kr.rows.map(r=>'<tr><td class="cat">'+r[0]+'</td><td>'+r[1]+'</td><td class="tools">'+r[2]+'</td><td class="tools">'+r[3]+'</td></tr>').join('')
+    +'</tbody></table></div>'
+    +'<div class="grid2" style="margin-top:16px;">'
+    +'<div class="card rv"><h4><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg></span>'+kr.considTitle+'</h4>'+chips(kr.consid)+'</div>'
+    +'<div class="card rv"><h4><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h11a2 2 0 012 2v14H7a2 2 0 01-2-2z"/><path d="M9 8h7M9 12h7"/></svg></span>'+kr.relTitle+'</h4><ul class="list">'+kr.rel.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'
+    +'</div>'
+    +'<p class="krisa-note rv">'+kr.note+'</p>'
+    +'</div></section>';
+
+  // days
+  h+=dayHTML(SCHED.day1,lang,L,'hari1');
+  h+=dayHTML(SCHED.day2,lang,L,'hari2');
+
+  // tools
+  h+='<section id="alatan"><div class="wrap"><div class="sec-head"><span class="sec-num">03</span><div>'
+    +'<h2 class="sec-title">'+tools.title+'</h2><p class="sec-sub">'+tools.sub+'</p></div></div>'
+    +'<table class="tbl rv"><thead><tr><th>'+tools.head[0]+'</th><th>'+tools.head[1]+'</th></tr></thead><tbody>'
+    +tools.rows.map(r=>'<tr><td class="cat">'+r[0]+'</td><td class="tools">'+r[1]+'</td></tr>').join('')
+    +'</tbody></table></div></section>';
+
+  // setup
+  h+='<section id="persediaan"><div class="wrap"><div class="sec-head"><span class="sec-num">04</span><div>'
+    +'<h2 class="sec-title">'+setup.title+'</h2><p class="sec-sub">'+setup.sub+'</p></div></div>'
+    +'<div class="grid2">'
+    +'<div class="card rv"><h4><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg></span>'+setup.envTitle+'</h4><ul class="list">'+setup.env.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'
+    +'<div class="card rv"><h4><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></span>'+setup.audTitle+'</h4><ul class="list ok">'+setup.aud.map(x=>'<li>'+x+'</li>').join('')+'</ul><p class="note-inline">'+setup.prereq+'</p></div>'
+    +'</div>'
+    +'<div class="card rv" style="margin-top:16px;"><h4><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>'+setup.methodTitle+'</h4>'+chips(setup.method)+'</div>'
+    +'</div></section>';
+
+  // assessment + outcome
+  h+='<section id="penilaian"><div class="wrap"><div class="sec-head"><span class="sec-num">05</span><div>'
+    +'<h2 class="sec-title">'+as.title+'</h2><p class="sec-sub">'+as.sub+'</p></div></div>'
+    +'<div class="assess">'+as.cards.map(c=>'<div class="card rv"><div class="pct">'+c[0]+'</div><div class="nm">'+c[1]+'</div><div class="ds">'+c[2]+'</div></div>').join('')+'</div>'
+    +'<div class="outcome rv" style="margin-top:22px;"><h4>'+as.outTitle+'</h4><p>'+as.out+'</p></div>'
+    +'</div></section>';
+
+  // trainer
+  const tr=TRAINER[lang];
+  h+='<section id="jurulatih"><div class="wrap"><div class="sec-head"><span class="sec-num">06</span><div>'
+    +'<h2 class="sec-title">'+tr.title+'</h2></div></div>'
+    +'<div class="card trainer rv">'
+    +'<div class="trainer-id"><div class="tr-ava">AA</div><div>'
+    +'<div class="tr-name">Al-Abrar bin Abdul Wahid</div><div class="tr-role">'+tr.role+'</div></div></div>'
+    +'<div class="trainer-contacts">'
+    +'<a class="tc" href="mailto:abrar.abdulwahid@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>abrar.abdulwahid@gmail.com</a>'
+    +'<a class="tc" href="https://wa.me/60132835415" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15.5a8.5 8.5 0 11-3.5-6.9"/><path d="M15 9l-3.5 3.5L9 11"/></svg>+60 13-283 5415 · '+tr.wa+'</a>'
+    +'<a class="tc" href="https://www.linkedin.com/in/al-abrar-abdul-wahid/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4"/></svg>LinkedIn</a>'
+    +'</div></div></div></section>';
+
+  // footer
+  h+='<footer><div class="wrap foot-inner"><p class="note">'+foot.note+'</p><span class="sig">'+foot.sig+'</span></div></footer>';
+
+  document.getElementById('app').innerHTML=h;
+
+  // static chrome
+  document.getElementById('brandtxt').textContent=UI[lang].brand;
+  document.getElementById('printbtn').textContent=UI[lang].print;
+  document.getElementById('navlinks').innerHTML=UI[lang].nav.map(n=>'<a href="'+n[0]+'">'+n[1]+'</a>').join('');
+  document.documentElement.lang=lang;
+}
+
+/* ---------------- STATE, TOGGLE, REVEAL ---------------- */
+let LANG='ms';
+let first=true;
+
+function attachReveal(){
+  const els=[...document.querySelectorAll('.rv')];
+  if(first){
+    const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+    els.forEach((el,i)=>{el.style.transitionDelay=Math.min(i%6*40,200)+'ms';io.observe(el);});
+    first=false;
+  } else {
+    els.forEach(el=>el.classList.add('in')); // no re-animation on language toggle
+  }
+  // nav active highlight
+  const links=[...document.querySelectorAll('.navlinks a')];
+  const map=links.map(l=>({l,sec:document.querySelector(l.getAttribute('href'))})).filter(x=>x.sec);
+  const navio=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const hit=map.find(m=>m.sec===e.target);if(hit){links.forEach(l=>{l.style.color='';l.style.background='';});hit.l.style.color='var(--blueprint)';hit.l.style.background='var(--panel)';}}});},{rootMargin:'-45% 0px -50% 0px'});
+  map.forEach(m=>navio.observe(m.sec));
+}
+
+function setLang(lang){
+  if(lang===LANG && !first) return;
+  // preserve which modules are open
+  const openState={};
+  document.querySelectorAll('details.mod').forEach(d=>{openState[d.dataset.key]=d.open;});
+  const y=window.scrollY;
+  LANG=lang;
+  render(lang);
+  document.querySelectorAll('details.mod').forEach(d=>{if(d.dataset.key in openState) d.open=openState[d.dataset.key];});
+  document.querySelectorAll('.langswitch button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  attachReveal();
+  window.scrollTo(0,y);
+}
+
+// initial render
+render(LANG);
+attachReveal();
+</script>
+</body>
+</html>

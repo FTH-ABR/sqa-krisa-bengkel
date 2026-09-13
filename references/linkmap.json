@@ -1,0 +1,579 @@
+{
+ "_about": "Single source of truth for every reference link used in slides/ and workshop-ai/. Paths are relative to the repo root. 'page' is the PDF page (use #page=N). 'jdn' is the official download URL on sqa.jdn.gov.my.",
+ "site": {
+  "repo": "https://github.com/FTH-ABR/sqa-krisa-bengkel",
+  "pages": "https://fth-abr.github.io/sqa-krisa-bengkel/",
+  "jdn_home": "https://sqa.jdn.gov.my/index.php/ms/",
+  "jdn_krisa_v2": "https://sqa.jdn.gov.my/index.php/ms/garis-panduan/garis-panduan-pembangunan-aplikasi-krisa-versi-beta-2026",
+  "jdn_krisa_v1": "https://sqa.jdn.gov.my/index.php/ms/garis-panduan/garis-panduan-pembangunan-aplikasi-krisa",
+  "jdn_pprisa": "https://sqa.jdn.gov.my/index.php/ms/garis-panduan/garis-panduan-pengurusan-projek-ict-prisa",
+  "jdn_templates_dev": "https://sqa.jdn.gov.my/index.php/ms/templat-artifak/dokumen-pembangunan-sistem",
+  "jdn_templates_pprisa": "https://sqa.jdn.gov.my/index.php/ms/templat-artifak/template-pengurusan-projek-ict-sektor-awam-pprisa",
+  "jdn_ivv": "https://sqa.jdn.gov.my/index.php/ms/garis-panduan/independent-verification-validation-iv-v",
+  "jdn_devops": "https://sqa.jdn.gov.my/index.php/ms/garis-panduan/garis-panduan-pelaksanaan-iv-v-dan-quick-guide",
+  "opencode_docs": "https://opencode.ai/docs/",
+  "opencode_zen": "https://opencode.ai/docs/zen/"
+ },
+ "docs": {
+  "K0": {
+   "title": "KRISAv2 Pendahuluan",
+   "path": "references/krisa-v2-beta-2026/00-PENDAHULUAN.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/krisa_versi_beta/PENDAHULUAN.pdf"
+  },
+  "K1": {
+   "title": "KRISAv2 Bab 1 Perancangan",
+   "path": "references/krisa-v2-beta-2026/BAB1-PERANCANGAN.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/krisa_versi_beta/BAB%201_FINAL_15012026.pdf"
+  },
+  "K2": {
+   "title": "KRISAv2 Bab 2 Fasa Permulaan",
+   "path": "references/krisa-v2-beta-2026/BAB2-FASA-PERMULAAN.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/krisa_versi_beta/BAB_2_FASA%20PERMULAAN_FINAL_15012026.pdf"
+  },
+  "K3": {
+   "title": "KRISAv2 Bab 3 Fasa Analisis",
+   "path": "references/krisa-v2-beta-2026/BAB3-FASA-ANALISIS.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/krisa_versi_beta/BAB_3_FASA%20ANALISIS_FINALY_15Jan2026.pdf"
+  },
+  "K4": {
+   "title": "KRISAv2 Bab 4 Fasa Reka Bentuk",
+   "path": "references/krisa-v2-beta-2026/BAB4-FASA-REKA-BENTUK.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/krisa_versi_beta/BAB_4%20_FASA_REKA_BENTUK_FINAL_15012026.pdf"
+  },
+  "K5": {
+   "title": "KRISAv2 Bab 5 Fasa Pembangunan",
+   "path": "references/krisa-v2-beta-2026/BAB5-FASA-PEMBANGUNAN.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/krisa_versi_beta/BAB_5_FASA_PEMBANGUNAN_FINAL_190126.pdf"
+  },
+  "K6": {
+   "title": "KRISAv2 Bab 6 Fasa Pengujian Penerimaan",
+   "path": "references/krisa-v2-beta-2026/BAB6-FASA-PENGUJIAN-PENERIMAAN.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/krisa_versi_beta/BAB_6%20_FASA_PENGUJIAN_PENERIMAAN_FINAL_20012026.pdf"
+  },
+  "K7": {
+   "title": "KRISAv2 Bab 7 Fasa Pelaksanaan",
+   "path": "references/krisa-v2-beta-2026/BAB7-FASA-PELAKSANAAN.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/krisa_versi_beta/BAB_7_FASA_PELAKSANAAN_FINAL_5Jan2026.pdf"
+  },
+  "K8": {
+   "title": "KRISAv2 Bab 8 Penyelarasan DevOps",
+   "path": "references/krisa-v2-beta-2026/BAB8-PENYELARASAN-PEMBANGUNAN-SISTEM-DEVOPS.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/krisa_versi_beta/BAB_8_PENYELARASAN_PEMBANGUNAN_SISTEM_MELALUI_PENDEKATAN_DEVOPS_FINAL_15JAN2026.pdf"
+  },
+  "P2": {
+   "title": "PPrISA 2.0 Versi Beta Feb 2025",
+   "path": "references/pprisa-2.0/PPrISA_2.0_Versi_Beta_Februari_2025.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/pprisa/PPrISA_2_0VersiBetaFebruari2025.pdf"
+  },
+  "PK": {
+   "title": "Pekeliling PPrISA Mac 2018",
+   "path": "references/pprisa-2.0/Pekeliling_PPrISA_Mac_2018.pdf",
+   "jdn": "https://sqa.jdn.gov.my/images/pdfdocument/pprisa/PekelilingPPrISAMac2018.pdf"
+  }
+ },
+ "templates_dev": {
+  "D01": "D01_DOKUMEN_PELAN_PEMBANGUNAN_SISTEM_PPS",
+  "D02": "D02_DOKUMEN_SPESIFIKASI_KEPERLUAN_BISNES_BRS",
+  "D03": "D03_DOKUMEN_SPESIFIKASI_KEPERLUAN_SISTEM_SRS",
+  "D04": "D04_DOKUMEN_SPESIFIKASI_REKABENTUK_SISTEM_SDS",
+  "D05": "D05_DOKUMEN_PELAN_MIGRASI_DATA",
+  "D06": "D06_DOKUMEN_SPESIFIKASI_MIGRASI_DATA",
+  "D07": "D07_DOKUMEN_PELAN_INTEGRASI_SISTEM",
+  "D08": "D08_DOKUMEN_SPESIFIKASI_INTEGRASI_DATA",
+  "D09": "D09_DOKUMENTASI_PANGKALAN_DATA",
+  "D10": "D10_DOKUMENTASI_KOD_SUMBER",
+  "D11": "D11_DOKUMEN_LAPORAN_UJIAN_SISTEM",
+  "D12": "D12_DOKUMEN_PELAN_INDUK_PENGUJIAN",
+  "D13": "D13_DOKUMEN_PELAN_UJIAN_PENERIMAAN_UAT-PAT",
+  "D14": "D14_DOKUMEN_LAPORAN_UJIAN_PENERIMAAN_UAT_PAT",
+  "D15": "D15_DOKUMEN_LAPORAN_MIGRASI_DATA",
+  "D16": "D16_DOKUMEN_LAPORAN_PENAMATAN_UJIAN",
+  "D17": "D17_DOKUMEN_MANUAL_PENGGUNA_SISTEM",
+  "D18": "D18_DOKUMEN_LAPORAN_SERAHAN_SISTEM"
+ },
+ "templates_dev_titles": {
+  "D01": "Pelan Pembangunan Sistem (PPS)",
+  "D02": "Spesifikasi Keperluan Bisnes (BRS)",
+  "D03": "Spesifikasi Keperluan Sistem (SRS)",
+  "D04": "Spesifikasi Reka Bentuk Sistem (SDS)",
+  "D05": "Pelan Migrasi Data",
+  "D06": "Spesifikasi Migrasi Data",
+  "D07": "Pelan Integrasi Sistem",
+  "D08": "Spesifikasi Integrasi Data",
+  "D09": "Dokumentasi Pangkalan Data",
+  "D10": "Dokumentasi Kod Sumber",
+  "D11": "Laporan Ujian Sistem",
+  "D12": "Pelan Induk Pengujian",
+  "D13": "Pelan Ujian Penerimaan (UAT/PAT)",
+  "D14": "Laporan Ujian Penerimaan (UAT/PAT)",
+  "D15": "Laporan Migrasi Data",
+  "D16": "Laporan Penamatan Ujian",
+  "D17": "Manual Pengguna Sistem",
+  "D18": "Laporan Serahan Sistem"
+ },
+ "templates_pprisa": {
+  "PPrISA01": {
+   "title": "Dokumen Permulaan Projek",
+   "word": "PPrISA01-DokumenPermulaanProjek_v27022018.docx",
+   "pdf": "PPrISA01-Dokumen_Permulaan_Projek.pdf"
+  },
+  "PPrISA02": {
+   "title": "Pelan Pengurusan Projek",
+   "word": "PPrISA02-PelanPengurusanProjek.docx",
+   "pdf": "PPrISA02-Pelan_Pengurusan_Projek.pdf"
+  },
+  "PPrISA03": {
+   "title": "Pelan Pengurusan Sumber",
+   "word": "PPrISA03-PelanPengurusanSumber.docx",
+   "pdf": "PPrISA03-Pelan_Pengurusan_Sumber.pdf"
+  },
+  "PPrISA04": {
+   "title": "Pelan Pengurusan Kos",
+   "word": "PPrISA04-PelanPengurusanKos.docx",
+   "pdf": "PPrISA04-Pelan_Pengurusan_Kos.pdf"
+  },
+  "PPrISA05": {
+   "title": "Pelan Pengurusan Kualiti",
+   "word": "PPrISA05-PelanPengurusanKualiti.docx",
+   "pdf": "PPrISA05-Pelan_Pengurusan_Kualiti.pdf"
+  },
+  "PPrISA06": {
+   "title": "Pelan Pengurusan Komunikasi",
+   "word": "PPrISA06-PelanPengurusanKomunikasi.docx",
+   "pdf": "PPrISA06-Pelan_Pengurusan_Komunikasi.pdf"
+  },
+  "PPrISA07": {
+   "title": "Pelan Pengurusan Risiko",
+   "word": "PPrISA07-PelanPengurusanRisiko.docx",
+   "pdf": "PPrISA07-Pelan_Pengurusan_Risiko.pdf"
+  },
+  "PPrISA08": {
+   "title": "Pelan Pengurusan Isu",
+   "word": "PPrISA08-PelanPengurusanIsu.docx",
+   "pdf": "PPrISA08-Pelan_Pengurusan_Isu.pdf"
+  },
+  "PPrISA09": {
+   "title": "Pelan Pengurusan Perubahan",
+   "word": "PPrISA09-PelanPengurusanPerubahan-ChangeMgt.docx",
+   "pdf": "PPrISA09-Pelan_Pengurusan_Perubahan_Change_Mgt.pdf"
+  },
+  "PPrISA10": {
+   "title": "Borang Pindaan",
+   "word": "PPrISA10-BorangPindaan.doc",
+   "pdf": "PPrISA10-Borang_Pindaan.pdf"
+  },
+  "PPrISA11": {
+   "title": "Log Penyelesaian Pindaan",
+   "word": "PPrISA11-LogPenyelesaianPindaan.docx",
+   "pdf": "PPrISA11-Log_Penyelesaian_Pindaan.pdf"
+  },
+  "PPrISA12": {
+   "title": "Borang Pelaporan Risiko",
+   "word": "PPrISA12-BorangPelaporanRisiko.doc",
+   "pdf": "PPrISA12-Borang_Pelaporan_Risiko.pdf"
+  },
+  "PPrISA13": {
+   "title": "Log Penyelesaian Risiko",
+   "word": "PPrISA13-LogPenyelesaianRisiko.doc",
+   "pdf": "PPrISA13-Log_Penyelesaian_Risiko.pdf"
+  },
+  "PPrISA14": {
+   "title": "Borang Pelaporan Isu",
+   "word": "PPrISA14-BorangPelaporanIsu.doc",
+   "pdf": "PPrISA14-Borang_Pelaporan_Isu.pdf"
+  },
+  "PPrISA15": {
+   "title": "Log Penyelesaian Isu",
+   "word": "PPrISA15-LogPenyelesaianIsu.doc",
+   "pdf": "PPrISA15-Log_Penyelesaian_Isu.pdf"
+  },
+  "PPrISA16": {
+   "title": "Laporan Status Projek (Kumpulan)",
+   "word": "PPrISA16-LaporanStatusProjek-Kumpulan.docx",
+   "pdf": "PPrISA16-Laporan_Status_Projek_Kumpulan.pdf"
+  },
+  "PPrISA17": {
+   "title": "Laporan Status Projek (Keseluruhan)",
+   "word": "PPrISA17-LaporanStatusProjek-Keseluruhan.docx",
+   "pdf": "PPrISA17-Laporan_Status_Projek_Keseluruhan.pdf"
+  },
+  "PPrISA18": {
+   "title": "Laporan Penamatan Projek",
+   "word": "PPrISA18-LaporanPenamatanProjek.doc",
+   "pdf": "PPrISA18-Laporan_Penamatan_Projek.pdf"
+  }
+ },
+ "modules": {
+  "M01": {
+   "anchors": [
+    {
+     "doc": "K1",
+     "page": 11,
+     "label": "Bab 1, 1.5 Metodologi KRISA (6 fasa)"
+    },
+    {
+     "doc": "K1",
+     "page": 19,
+     "label": "Bab 1, 1.6.4 Jaminan Kualiti Perisian (SQA), Jadual 1.3 Atribut Kualiti"
+    },
+    {
+     "doc": "K1",
+     "page": 20,
+     "label": "Bab 1, Rajah 1.11 dan 1.12 Verifikasi dan Validasi"
+    },
+    {
+     "doc": "K1",
+     "page": 22,
+     "label": "Bab 1, Jadual 1.4 Jenis Pengujian IV&V"
+    },
+    {
+     "doc": "K8",
+     "page": 1,
+     "label": "Bab 8, KRISA + PPrISA + DevOps saling melengkapi"
+    },
+    {
+     "doc": "P2",
+     "page": 60,
+     "label": "PPrISA 2.0, 4.2.1 b) skop: SPA dan Independent Validation & Verification"
+    },
+    {
+     "doc": "P2",
+     "page": 53,
+     "label": "PPrISA 2.0, peranan pasukan Jaminan Kualiti dan Pengujian Sistem"
+    }
+   ],
+   "templates_dev": [
+    "D01"
+   ],
+   "templates_pprisa": [
+    "PPrISA02"
+   ]
+  },
+  "M02": {
+   "anchors": [
+    {
+     "doc": "K2",
+     "page": 10,
+     "label": "Bab 2, 2.4 Kajian Keperluan Bisnes (BRS)"
+    },
+    {
+     "doc": "K2",
+     "page": 56,
+     "label": "Bab 2, 2.11 Traceability Matrix (RTM) F1.8, Templat T2.8"
+    },
+    {
+     "doc": "K3",
+     "page": 33,
+     "label": "Bab 3, 3.8 Keperluan Bukan Fungsian F2.4"
+    },
+    {
+     "doc": "K3",
+     "page": 42,
+     "label": "Bab 3, 3.10 Spesifikasi Keperluan Sistem (SRS)"
+    },
+    {
+     "doc": "K8",
+     "page": 5,
+     "label": "Bab 8, 8.3.1 Gate Review dan Definition of Done"
+    },
+    {
+     "doc": "P2",
+     "page": 74,
+     "label": "PPrISA 2.0, 4.2.4 a) Pengurusan Kualiti"
+    }
+   ],
+   "templates_dev": [
+    "D02",
+    "D03",
+    "D12"
+   ],
+   "templates_pprisa": [
+    "PPrISA05",
+    "PPrISA07"
+   ]
+  },
+  "M03": {
+   "anchors": [
+    {
+     "doc": "K4",
+     "page": 4,
+     "label": "Bab 4, 4.5 Reka Bentuk Seni Bina"
+    },
+    {
+     "doc": "K4",
+     "page": 10,
+     "label": "Bab 4, Jadual 4.4 Jenis seni bina (DevOps, CI/CD)"
+    },
+    {
+     "doc": "K4",
+     "page": 111,
+     "label": "Bab 4, 4.12 Spesifikasi Integrasi"
+    },
+    {
+     "doc": "K1",
+     "page": 24,
+     "label": "Bab 1, 1.6.7 Faktor Keselamatan ICT, Jadual 1.5"
+    },
+    {
+     "doc": "K5",
+     "page": 30,
+     "label": "Bab 5, 5.6.8 Amalan Pengaturcaraan Selamat"
+    },
+    {
+     "doc": "P2",
+     "page": 71,
+     "label": "PPrISA 2.0, 4.2.3 a) Pengurusan Risiko"
+    }
+   ],
+   "templates_dev": [
+    "D04",
+    "D08"
+   ],
+   "templates_pprisa": [
+    "PPrISA07",
+    "PPrISA12",
+    "PPrISA13"
+   ]
+  },
+  "M04": {
+   "anchors": [
+    {
+     "doc": "K5",
+     "page": 33,
+     "label": "Bab 5, 5.7 Pengujian Sistem, peringkat ujian"
+    },
+    {
+     "doc": "K6",
+     "page": 4,
+     "label": "Bab 6, 6.6 Pelan Induk Pengujian F5.1"
+    },
+    {
+     "doc": "K6",
+     "page": 5,
+     "label": "Bab 6, Jadual 6.2 Peringkat UAT, PAT, FAT"
+    },
+    {
+     "doc": "K6",
+     "page": 9,
+     "label": "Bab 6, 6.7 Dokumentasi Persediaan Ujian F5.2"
+    },
+    {
+     "doc": "K6",
+     "page": 11,
+     "label": "Bab 6, Kes ujian aras tinggi dan rendah"
+    },
+    {
+     "doc": "K6",
+     "page": 20,
+     "label": "Bab 6, 6.8 UAT, kriteria masuk dan keluar"
+    }
+   ],
+   "templates_dev": [
+    "D12",
+    "D13"
+   ],
+   "templates_pprisa": [
+    "PPrISA05"
+   ]
+  },
+  "M05": {
+   "anchors": [
+    {
+     "doc": "K5",
+     "page": 33,
+     "label": "Bab 5, 5.7 Pengujian Sistem F4.3"
+    },
+    {
+     "doc": "K5",
+     "page": 39,
+     "label": "Bab 5, Langkah 5 Laporan Ujian Sistem (Jadual 5.6)"
+    },
+    {
+     "doc": "K5",
+     "page": 28,
+     "label": "Bab 5, 5.6.7 Amalan terbaik (Git, piawaian kod)"
+    },
+    {
+     "doc": "K6",
+     "page": 23,
+     "label": "Bab 6, 6.9 PAT (prestasi, bebanan, keselamatan)"
+    },
+    {
+     "doc": "K7",
+     "page": 19,
+     "label": "Bab 7, 7.10 Persekitaran Pembangunan (Dev, Staging, Prod)"
+    },
+    {
+     "doc": "K8",
+     "page": 3,
+     "label": "Bab 8, 8.2.2 Pendekatan DevOps dan CI/CD"
+    }
+   ],
+   "templates_dev": [
+    "D10",
+    "D11"
+   ],
+   "templates_pprisa": []
+  },
+  "M06": {
+   "anchors": [
+    {
+     "doc": "K6",
+     "page": 2,
+     "label": "Bab 6, 6.3 Pengurusan Ralat (Rajah 6.2)"
+    },
+    {
+     "doc": "K6",
+     "page": 7,
+     "label": "Bab 6, Jadual 6.3 Tahap Severity"
+    },
+    {
+     "doc": "K6",
+     "page": 21,
+     "label": "Bab 6, 6.8 Defect Triage dan kriteria keluar UAT"
+    },
+    {
+     "doc": "K5",
+     "page": 38,
+     "label": "Bab 5, Jadual 5.5 Ujian Sistem (tiada severity Blocking/Critical)"
+    },
+    {
+     "doc": "P2",
+     "page": 92,
+     "label": "PPrISA 2.0, 5.4.2 i b) Isu: Borang Pelaporan dan Log Penyelesaian Isu"
+    }
+   ],
+   "templates_dev": [
+    "D11",
+    "D14"
+   ],
+   "templates_pprisa": [
+    "PPrISA14",
+    "PPrISA15"
+   ]
+  },
+  "M07": {
+   "anchors": [
+    {
+     "doc": "K6",
+     "page": 26,
+     "label": "Bab 6, 6.10 Laporan Ujian Penerimaan (UAT dan PAT)"
+    },
+    {
+     "doc": "K7",
+     "page": 7,
+     "label": "Bab 7, 7.6 Ujian Penerimaan Akhir (FAT)"
+    },
+    {
+     "doc": "K7",
+     "page": 9,
+     "label": "Bab 7, Laporan Penamatan Ujian (Jadual 7.5, ISO/IEC/IEEE 29119)"
+    },
+    {
+     "doc": "K7",
+     "page": 14,
+     "label": "Bab 7, 7.8 Serahan Sistem"
+    },
+    {
+     "doc": "P2",
+     "page": 94,
+     "label": "PPrISA 2.0, 5.4.2 ii b) Penilaian Kualiti Serahan"
+    },
+    {
+     "doc": "P2",
+     "page": 98,
+     "label": "PPrISA 2.0, 6.1.2 Penilaian Akhir"
+    }
+   ],
+   "templates_dev": [
+    "D14",
+    "D16",
+    "D18"
+   ],
+   "templates_pprisa": [
+    "PPrISA05",
+    "PPrISA17"
+   ]
+  },
+  "M08": {
+   "anchors": [
+    {
+     "doc": "K8",
+     "page": 6,
+     "label": "Bab 8, Jadual 8.1 Pemetaan Aktiviti KRISA ke DevOps"
+    },
+    {
+     "doc": "K8",
+     "page": 9,
+     "label": "Bab 8, 8.3.3 Penyelarasan Pengurusan Perubahan dan Risiko"
+    },
+    {
+     "doc": "K7",
+     "page": 17,
+     "label": "Bab 7, 7.9 Repositori dan Serahan Kod Sumber (CI/CD)"
+    },
+    {
+     "doc": "K1",
+     "page": 22,
+     "label": "Bab 1, 1.6.5 Pengurusan Kawalan Pindaan"
+    },
+    {
+     "doc": "P2",
+     "page": 73,
+     "label": "PPrISA 2.0, 4.2.3 c) Pengurusan Pindaan (CR)"
+    },
+    {
+     "doc": "P2",
+     "page": 91,
+     "label": "PPrISA 2.0, 5.4.2 Pemantauan dan laporan status"
+    }
+   ],
+   "templates_dev": [
+    "D18"
+   ],
+   "templates_pprisa": [
+    "PPrISA10",
+    "PPrISA11",
+    "PPrISA16",
+    "PPrISA17"
+   ]
+  },
+  "M09": {
+   "anchors": [
+    {
+     "doc": "K8",
+     "page": 8,
+     "label": "Bab 8, Serahan mengikut fasa (penyelarasan DevOps)"
+    },
+    {
+     "doc": "K1",
+     "page": 14,
+     "label": "Bab 1, 1.6 Faktor Kejayaan"
+    },
+    {
+     "doc": "P2",
+     "page": 21,
+     "label": "PPrISA 2.0, Rajah 2.4 Pelan Tindakan (templat mengikut fasa)"
+    },
+    {
+     "doc": "P2",
+     "page": 98,
+     "label": "PPrISA 2.0, 6.1.2 Penilaian Akhir"
+    }
+   ],
+   "templates_dev": [
+    "D03",
+    "D12",
+    "D13",
+    "D14",
+    "D16"
+   ],
+   "templates_pprisa": [
+    "PPrISA05",
+    "PPrISA07",
+    "PPrISA10",
+    "PPrISA18"
+   ]
+  }
+ }
+}

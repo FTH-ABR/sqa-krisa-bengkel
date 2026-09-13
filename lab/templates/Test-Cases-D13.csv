@@ -1,0 +1,9 @@
+# Templat Kes Ujian (Test Cases) ShopFast. Mirrors D13 Pelan Ujian Penerimaan UAT-PAT (Lampiran: senario ujian dan kes ujian) dan KRISAv2 Bab 6 seksyen 6.7 Dokumentasi Persediaan Ujian [F5.2]
+# Rujukan rasmi: ../../references/templates-D01-D18/docx/D13_DOKUMEN_PELAN_UJIAN_PENERIMAAN_UAT-PAT.docx ; ../../references/krisa-v2-beta-2026/BAB6-FASA-PENGUJIAN-PENERIMAAN.pdf#page=9 ; templat asal KRISA 1.0 ../../references/krisa-v1-2019/apendiks/Apendiks10-TemplatPersediaanUjian.pdf
+# Baris bermula dengan # ialah nota dan tidak disalin ke output. Jangan guna koma dalam teks; pisahkan langkah dengan titik koma.
+# ID: TC-CHK-001 dan seterusnya. FR_ID: ID persis daripada SRS (REQ-CHK-xx atau FR-xx). Teknik: EP | BVA | Decision Table | State Transition | Use Case | Error Guessing
+# Keutamaan: Tinggi | Sederhana | Rendah. Keputusan: Belum Dilaksana | Lulus | Gagal | Disekat
+TC_ID,FR_ID,Tajuk,Teknik,Partisi_Atau_Peraturan,Prasyarat,Langkah,Data_Ujian,Jangkaan,Keutamaan,Keputusan
+TC-CHK-010,REQ-CHK-02,Kod promosi huruf kecil ditolak,EP,Partisi tidak sah: mengandungi huruf kecil,Troli sesi baharu mengandungi P002 x 1,1. POST /api/discounts/apply dengan kod; 2. Semak kod status dan medan error,code=raya15,422 dengan error INVALID_CODE_FORMAT dan discountCode kekal null,Tinggi,Belum Dilaksana
+TC-CHK-011,REQ-CHK-02,Kod promosi 5 aksara ditolak,BVA,Sempadan panjang minimum 6: nilai 5 (tidak sah),Troli sesi baharu mengandungi P002 x 1,1. POST /api/discounts/apply dengan kod; 2. Semak kod status dan medan error,code=RAYA1,422 dengan error INVALID_CODE_FORMAT,Tinggi,Belum Dilaksana
+TC-CHK-030,REQ-CHK-05,Tindakan ship ke atas pesanan NEW ditolak,State Transition,Peralihan tidak sah: NEW dengan tindakan ship,Pesanan berstatus NEW dicipta oleh sesi yang sama,1. POST /api/orders/{orderId}/transitions dengan action ship; 2. GET /api/orders/{orderId},action=ship,409 dengan error INVALID_TRANSITION dan status pesanan kekal NEW,Tinggi,Belum Dilaksana

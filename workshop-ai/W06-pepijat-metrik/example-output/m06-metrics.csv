@@ -1,0 +1,6 @@
+Metrik_ID,Metrik,Formula,Input_Data,Nilai,Sasaran,Status,Catatan
+QM-01,Kadar lulus ujian (Test pass rate),Lulus / (Lulus + Gagal) x 100,Lulus=13; Gagal=5,72.2%,Sekurang-kurangnya 95.0%,Tidak Capai,Tiada kes Disekat
+QM-02,Ketumpatan ralat (Defect density),Ralat sebelum pelepasan / Saiz (UFP),Ralat=5; Saiz=1.2 KLOC,4.2 ralat setiap KLOC,Tidak melebihi 0.25 ralat setiap UFP,Tiada Data,Saiz dalam KLOC bukan UFP
+QM-03,Keberkesanan penyingkiran ralat (DRE),Ralat sebelum pelepasan / (Ralat sebelum pelepasan + Ralat selepas pelepasan) x 100,Sebelum=5; Selepas=1,83.3%,Sekurang-kurangnya 90.0%,Tidak Capai,[ANDAIAN: pepijat ditemui 5 dianggap ralat sebelum pelepasan]
+QM-04,Kebocoran ralat (Defect leakage),Ralat ditemui dalam UAT / Ralat ditemui dalam ujian sistem x 100,Tiada Data,,Tidak melebihi 10.0%,Tiada Data,Tiada pengasingan ralat UAT dan ujian sistem
+QM-05,Purata masa pembaikan (MTTR),Jumlah jam pembaikan / Bilangan ralat dibaiki,Tiada Data,,Severity 1 tidak melebihi 8 jam,Tiada Data,Tiada data jam pembaikan

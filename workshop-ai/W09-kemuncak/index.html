@@ -1,0 +1,99 @@
+<!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>W09 Kemuncak bersama rakan AI: buktikan quality gate</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{--ink:#0F1620;--paper:#E7ECF2;--panel:#fff;--line:#D8E0EA;--muted:#5A6879;--bp:#1B3B73;--bps:#E9F0FA;--ai:#9B4D7A}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,'Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
+a{color:#1f5fa8}a:hover{color:#0b3d75}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header.top{background:var(--ink);color:#fff;padding:26px 0 30px}
+header.top a{color:#BFD3F7}.crumb{font:500 13px 'IBM Plex Mono',monospace;color:#9fb0c6;margin-bottom:10px}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);line-height:1.1;margin:6px 0}
+h2{font-family:'Space Grotesk',sans-serif;font-size:24px;margin:34px 0 12px;color:var(--bp)}
+h3{font-family:'Space Grotesk',sans-serif;font-size:18px;margin:0 0 8px}
+.en{color:#C3CEDC;font-size:18px}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{display:inline-block;padding:5px 12px;border-radius:999px;font:600 13px Inter;background:#ffffff1a;color:#fff;border:1px solid #ffffff33}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.btn{display:inline-block;padding:9px 14px;border-radius:8px;font-weight:600;text-decoration:none;color:#fff;background:var(--bp);margin:4px 6px 4px 0}
+.btn.ai{background:var(--ai)}.btn.ghost{background:#fff;color:var(--bp);border:1px solid var(--line)}
+ol.steps{margin:0;padding-left:20px}ol.steps li{margin:6px 0}
+table{border-collapse:collapse;width:100%;background:#fff}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px}
+th{background:var(--bp);color:#fff;font-weight:600}
+.tw{overflow-x:auto;border-radius:10px;border:1px solid var(--line)}
+.mono,code{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13.5px}
+pre{background:#0F1620;color:#E9F0FA;padding:14px 16px;border-radius:10px;overflow-x:auto;font-size:13.5px}
+img.fig{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:#fff}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.thumbs a{display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.thumbs img{width:100%;display:block}.thumbs span{display:block;font:500 12px 'IBM Plex Mono';padding:4px 8px;color:var(--muted)}
+.note{background:var(--bps);border-left:5px solid var(--bp);padding:12px 16px;border-radius:8px;font-size:14.5px}
+.aibox{border-left:6px solid var(--ai)}
+footer{margin:50px 0 30px;color:var(--muted);font-size:13px}
+.tag{font:600 12px 'IBM Plex Mono';color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+
+.step{display:grid;grid-template-columns:minmax(260px,1fr) 2fr;gap:18px;align-items:start;margin:18px 0;padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px}
+@media (max-width:820px){.step{grid-template-columns:1fr}}
+.step h3{margin:0 0 6px}.ms{color:var(--muted);font-size:14px}
+.copy{position:relative}.copy button{position:absolute;top:8px;right:8px;font:600 12px Inter,sans-serif;border:0;border-radius:6px;padding:5px 9px;background:#9B4D7A;color:#fff;cursor:pointer;z-index:1}
+.copy button.done{background:#2E8B57}.copy button.manual{background:#A8721E}
+.copy pre{padding-right:78px}
+</style></head><body><header class="top"><div class="wrap"><div class="crumb"><a href="../../index.html">Laman kursus</a> / Bengkel AI / W09</div>
+<div class="tag" style="color:#C98FB0">W09 · M09 · 10 minit · Hari 2, 17:10 hingga 17:20</div>
+<h1>Kemuncak bersama rakan AI: buktikan quality gate</h1><div class="en">Capstone with an AI pair: prove the quality gate</div>
+<div class="meta"><a class="btn ai" href="W09-kemuncak.pdf">Muat turun slaid W09 (PDF)</a><a class="btn ghost" href="../../slides/M09/index.html">Hab modul</a><a class="btn ghost" href="prompts.md">prompts.md</a></div></div></header>
+<main class="wrap"><h2>Matlamat / Goal</h2><div class="card"><p>Biar AI menilai quality gate daripada bukti yang anda hasilkan selama dua hari, termasuk larian ujian secara langsung, kemudian bentangkan jejak dan kesilapan AI yang anda tangkap.</p><p class="ms">Let the AI evaluate a quality gate from the evidence you produced over two days, including a live test run, then present the trail and the AI mistakes you caught.</p>
+<p class="note">Peraturan data: guna data sintetik ShopFast sahaja. Model percuma dihoskan di luar negara. Output AI ialah draf yang mesti disemak manusia.</p></div>
+<h2>Langkah demi langkah dengan tangkapan skrin sebenar</h2><div class="step"><div><div class="tag">Langkah 1 / Step 1 · opencode (Build)</div><h3>Jalankan /quality-gate dengan larian ujian langsung. opencode menjalankan npm test (dibenarkan dalam opencode.json) dan meminta kebenaran sebelum menulis. AI membaca dokumen dahulu dan mungkin berhenti seketika pada Preparing write. Apabila dialog Permission required muncul, baca pratonton dan pilih Allow once.</h3><p class="ms">Run /quality-gate with a live test run. opencode runs npm test (allowed in opencode.json) and asks before writing. The AI reads the documents first and may pause at Preparing write. When the Permission required dialog appears, read the preview and choose Allow once.</p>
+<div class="copy"><button type="button" onclick="salin(this)" title="Salin ke papan keratan / Copy to clipboard">Salin</button><pre>/quality-gate G3 jalankan-ujian</pre></div></div>
+<a href="screenshots/01-quality-gate-permission.png"><img class="fig" loading="lazy" src="screenshots/01-quality-gate-permission.png" alt="Jalankan /quality-gate dengan larian ujian langsung. opencode menjalankan npm test (dibenarkan dalam opencode.json) dan meminta kebenaran sebelum menulis. AI membaca dokumen dahulu dan mungkin berhenti seketika pada Preparing write. Apabila dialog Permission required muncul, baca pratonton dan pilih Allow once."></a></div><div class="step"><div><div class="tag">Langkah 2 / Step 2 · opencode</div><h3>Allow once. Baca keputusan dan bukti bagi setiap kriteria.</h3><p class="ms">Allow once. Read the decision and the evidence per criterion.</p>
+<div class="copy"><button type="button" onclick="salin(this)" title="Salin ke papan keratan / Copy to clipboard">Salin</button><pre>Allow once (Enter)</pre></div></div>
+<a href="screenshots/02-quality-gate-saved.png"><img class="fig" loading="lazy" src="screenshots/02-quality-gate-saved.png" alt="Allow once. Baca keputusan dan bukti bagi setiap kriteria."></a></div><div class="step"><div><div class="tag">Langkah 3 / Step 3 · opencode (Plan)</div><h3>Tukar ke Plan dan minta AI mengkritik kesimpulannya sendiri.</h3><p class="ms">Switch to Plan and ask the AI to criticise its own conclusions.</p>
+<div class="copy"><button type="button" onclick="salin(this)" title="Salin ke papan keratan / Copy to clipboard">Salin</button><pre>Senaraikan 3 kesimpulan paling lemah dalam keputusan quality gate tadi dan bukti tambahan yang diperlukan untuk setiap satu. Jangan tulis fail.</pre></div></div>
+<a href="screenshots/03-weakest-conclusions.png"><img class="fig" loading="lazy" src="screenshots/03-weakest-conclusions.png" alt="Tukar ke Plan dan minta AI mengkritik kesimpulannya sendiri."></a></div><div class="step"><div><div class="tag">Langkah 4 / Step 4 · PowerShell</div><h3>Sediakan outputs anda sebagai bukti audit dan commit. Guna -f kerana lab/outputs diabaikan oleh .gitignore supaya kerja pelatih tidak termasuk ke repositori awam secara tidak sengaja.</h3><p class="ms">Stage your outputs as audit evidence and commit. Use -f because lab/outputs is ignored by .gitignore, so trainee work never reaches the public repository by accident.</p>
+<div class="copy"><button type="button" onclick="salin(this)" title="Salin ke papan keratan / Copy to clipboard">Salin</button><pre>git add -f outputs shopfast/tests/ui/m05-senario.spec.js
+git status --short
+git commit -m &quot;bukti kemuncak pasukan&quot;
+git log --oneline -3</pre></div></div>
+<a href="screenshots/04-commit-evidence.png"><img class="fig" loading="lazy" src="screenshots/04-commit-evidence.png" alt="Sediakan outputs anda sebagai bukti audit dan commit. Guna -f kerana lab/outputs diabaikan oleh .gitignore supaya kerja pelatih tidak termasuk ke repositori awam secara tidak sengaja."></a></div>
+<h2>Semakan manusia / Human check</h2><div class="card aibox"><ol class="steps"><li><b>Setiap kriteria dipautkan ke fail bukti dan nilai sebenar</b><br><span class='ms'>Every criterion links to an evidence file and a real value</span></li><li><b>Tiada GO selagi ada kriteria tidak dipenuhi atau tanpa bukti</b><br><span class='ms'>No GO while any criterion is unmet or without evidence</span></li><li><b>Sekurang-kurangnya satu kesilapan AI ditemui dan dibetulkan oleh pasukan</b><br><span class='ms'>At least one AI mistake was found and corrected by the team</span></li></ol></div>
+<h2>Contoh output sebenar</h2><div class="card"><ul><li><a href='example-output/m09-quality-gate.md'>m09-quality-gate.md</a></li></ul><p class="ms">Jawapan AI berbeza setiap larian. Bandingkan struktur dan semak kandungan.</p></div>
+<h2>Jika ada masalah / Troubleshooting</h2><div class="tw"><table><tr><th>Masalah</th><th>Tindakan</th></tr><tr><td>opencode is not recognised</td><td class='mono'>Close and reopen PowerShell so PATH refreshes. Still failing: powershell -ExecutionPolicy Bypass -File .\setup\install-opencode.ps1 -Portable</td></tr><tr><td>Scripts are disabled on this system</td><td class='mono'>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned, or run opencode.cmd instead of opencode</td></tr><tr><td>The model is slow or stops</td><td class='mono'>Wait up to 2 minutes. Press Esc to interrupt, then send the prompt again. Try another free model with /models</td></tr><tr><td>Permission required dialog</td><td class='mono'>Read the preview. Choose Allow once for files in outputs/. Reject anything outside the lab folder</td></tr><tr><td>File or command not found</td><td class='mono'>Check the status bar path ends with \lab. Commands and @files are relative to the lab folder</td></tr><tr><td>Answer uses Indonesian words or dashes</td><td class='mono'>Reply: Ikut AGENTS.md peraturan 1 dan 14, tulis semula dalam Bahasa Melayu Malaysia</td></tr><tr><td>Network or proxy error</td><td class='mono'>$env:HTTPS_PROXY = &quot;http://proxy:port&quot; and $env:NO_PROXY = &quot;localhost,127.0.0.1&quot; before starting opencode</td></tr><tr><td>Port 3000 already in use</td><td class='mono'>$env:PORT = 3001 before npm start, and use http://localhost:3001</td></tr></table></div>
+<h2>Pautan</h2><div class="card"><ul><li><a href="https://opencode.ai/docs/">Dokumentasi opencode</a></li><li><a href="https://opencode.ai/docs/tui/">Arahan dan kekunci TUI opencode</a></li>
+<li><a href="../../lab/README.md">README makmal dan senarai arahan</a></li><li><a href="../../lab/AGENTS.md">Peraturan AGENTS.md</a></li><li><a href="../../references/README.md">Semua rujukan JDN</a></li></ul></div></main>
+<footer class="wrap">Bengkel Amali SQA KRISAv2 dan PPrISA 2.0 · 14 hingga 15 September 2026 · Makmal Komputer Aras 11, Menara MyIPO · Jurulatih: Al-Abrar bin Abdul Wahid ·
+Rujukan hak cipta Jabatan Digital Negara (JDN), <a href="https://sqa.jdn.gov.my/index.php/ms/">sqa.jdn.gov.my</a></footer><script>
+function salinFallback(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text; ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.left = '-9999px';
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  var ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+  document.body.removeChild(ta);
+  return ok;
+}
+function salinSelect(pre) {
+  var r = document.createRange(); r.selectNodeContents(pre);
+  var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+}
+function salinTanda(btn, ok) {
+  btn.textContent = ok ? 'Disalin!' : 'Tekan Ctrl+C';
+  btn.className = ok ? 'done' : 'manual';
+  clearTimeout(btn._t);
+  btn._t = setTimeout(function () { btn.textContent = 'Salin'; btn.className = ''; }, 2000);
+}
+function salin(btn) {
+  var pre = btn.parentNode.querySelector('pre');
+  var text = pre.innerText.replace(/\r\n/g, '\n');
+  var fallback = function () {
+    var ok = salinFallback(text);
+    if (!ok) salinSelect(pre);
+    salinTanda(btn, ok);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function () { salinTanda(btn, true); }, fallback);
+  } else {
+    fallback();
+  }
+}
+</script></body></html>

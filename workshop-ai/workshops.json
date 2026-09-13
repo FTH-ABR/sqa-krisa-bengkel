@@ -1,0 +1,393 @@
+{
+  "_about": "Single source for the Hands-On SQA-AI Assistant Workshop segments. Used by the module slides, the W decks and the web guides. Project commands live in lab/.opencode/commands/.",
+  "tool": {
+    "name": "opencode",
+    "version": "1.18.30",
+    "model": "opencode/big-pickle",
+    "provider": "OpenCode Zen (free tier, no API key)",
+    "docs": "https://opencode.ai/docs/"
+  },
+  "workshops": {
+    "W00": {
+      "folder": "W00-setup",
+      "module": "Setup",
+      "minutes": 30,
+      "slot": "Hari 1, 09:00 hingga 09:30",
+      "title_en": "Set up your SQA-AI assistant",
+      "title_ms": "Sediakan pembantu AI SQA anda",
+      "goal_en": "Clone the course repository, check the PC, install opencode, start it in the lab folder with the free model and learn the five controls you will use all day.",
+      "goal_ms": "Klon repositori kursus, semak PC, pasang opencode, mulakan dalam folder lab dengan model percuma dan kenali lima kawalan yang digunakan sepanjang hari.",
+      "steps_en": [
+        "Clone the repository and run setup\\check-lab.ps1",
+        "Install opencode with npm and check the version",
+        "Start opencode in lab\\ with the Big Pickle model",
+        "Learn Tab (Plan or Build), @file, /command, /models and !command"
+      ],
+      "steps_ms": [
+        "Klon repositori dan jalankan setup\\check-lab.ps1",
+        "Pasang opencode dengan npm dan semak versi",
+        "Mulakan opencode dalam lab\\ dengan model Big Pickle",
+        "Kenali Tab (Plan atau Build), @fail, /arahan, /models dan !arahan"
+      ],
+      "prompts": [
+        "git clone https://github.com/FTH-ABR/sqa-krisa-bengkel.git",
+        "powershell -ExecutionPolicy Bypass -File .\\setup\\check-lab.ps1",
+        "npm install -g opencode-ai",
+        "cd lab ; opencode -m opencode/big-pickle"
+      ],
+      "output": "PC sedia: check-lab.ps1 menunjukkan SEMUA OK",
+      "checks_en": [
+        "check-lab.ps1 shows all OK",
+        "opencode --version prints 1.18.x",
+        "The status line shows Big Pickle, OpenCode Zen"
+      ],
+      "checks_ms": [
+        "check-lab.ps1 menunjukkan SEMUA OK",
+        "opencode --version memaparkan 1.18.x",
+        "Baris status memaparkan Big Pickle, OpenCode Zen"
+      ]
+    },
+    "W01": {
+      "folder": "W01-minda-kualiti",
+      "module": "M01",
+      "minutes": 20,
+      "slot": "Hari 1, 10:35 hingga 10:55",
+      "title_en": "AI as your quality coach",
+      "title_ms": "AI sebagai jurulatih kualiti",
+      "goal_en": "Use the read-only Plan agent to analyse five ShopFast incidents, see where each defect was injected, then let the Build agent save a bilingual QA glossary.",
+      "goal_ms": "Guna ejen Plan (baca sahaja) untuk menganalisis lima insiden ShopFast, lihat fasa kecacatan disuntik, kemudian biar ejen Build menyimpan glosari QA dwibahasa.",
+      "steps_en": [
+        "Start opencode in Plan mode and analyse the incidents",
+        "Ask for a Cost of Poor Quality table in the same session",
+        "Switch to Build and ask for the glossary file",
+        "Approve the file write and open the result"
+      ],
+      "steps_ms": [
+        "Mulakan opencode dalam mod Plan dan analisis insiden",
+        "Minta jadual Cost of Poor Quality dalam sesi yang sama",
+        "Tukar ke Build dan minta fail glosari",
+        "Luluskan penulisan fail dan buka hasilnya"
+      ],
+      "prompts": [
+        "Baca @shopfast/docs/incidents.md. Bagi setiap insiden berikan: punca akar, fasa SDLC kecacatan disuntik, fasa ia ditemui, dan aktiviti SQA yang boleh menangkapnya lebih awal. Rujuk KRISAv2 Bab 1 1.6.4 menggunakan jadual rujukan dalam AGENTS.md. Jadual maksimum 6 lajur.",
+        "Bina jadual Cost of Poor Quality (fasa, kos relatif, contoh ShopFast) dan terangkan Shift-Left dalam 3 ayat.",
+        "Tulis fail outputs/m01-glosari-qa.md: 12 istilah (QA, QC, Verifikasi, Validasi, Ujian Statik, Shift-Left, Shift-Right, Quality Gate, Kecacatan, Kegagalan, IV&V, DevOps) dalam satu jadual dengan takrif Bahasa Melayu dan Inggeris."
+      ],
+      "output": "outputs/m01-glosari-qa.md",
+      "checks_en": [
+        "Every incident is mapped to a real KRISAv2 phase (Permulaan to Pelaksanaan)",
+        "QA is described as prevention and QC as detection",
+        "Links point to the KRISAv2 page table, not invented page numbers"
+      ],
+      "checks_ms": [
+        "Setiap insiden dipetakan ke fasa KRISAv2 yang sebenar (Permulaan hingga Pelaksanaan)",
+        "QA diterangkan sebagai pencegahan dan QC sebagai pengesanan",
+        "Pautan merujuk jadual halaman KRISAv2, bukan nombor halaman rekaan"
+      ]
+    },
+    "W02": {
+      "folder": "W02-perancangan-qa",
+      "module": "M02",
+      "minutes": 25,
+      "slot": "Hari 1, 12:30 hingga 12:55",
+      "title_en": "AI-assisted requirement review and RTM",
+      "title_ms": "Semakan keperluan dan RTM dibantu AI",
+      "goal_en": "Let the AI statically review the flawed ShopFast SRS against the BRS, rewrite weak requirements as Given/When/Then and draft the RTM as CSV.",
+      "goal_ms": "Biar AI membuat semakan statik SRS ShopFast yang bercacat berbanding BRS, menulis semula keperluan lemah dalam Given/When/Then dan mendraf RTM dalam CSV.",
+      "steps_en": [
+        "Run /review-srs on two checkout requirements",
+        "Compare the AI findings with your team review",
+        "Run /rewrite-gwt and approve the file",
+        "Run /rtm and open the CSV"
+      ],
+      "steps_ms": [
+        "Jalankan /review-srs untuk dua keperluan checkout",
+        "Bandingkan penemuan AI dengan semakan pasukan anda",
+        "Jalankan /rewrite-gwt dan luluskan fail",
+        "Jalankan /rtm dan buka CSV"
+      ],
+      "prompts": [
+        "/review-srs REQ-CHK-03 dan REQ-CHK-04",
+        "/rewrite-gwt REQ-CHK-03 REQ-CHK-04",
+        "/rtm REQ-CHK-01 hingga REQ-CHK-06"
+      ],
+      "output": "outputs/m02-gwt-rewrite.md, outputs/m02-rtm.csv",
+      "checks_en": [
+        "Every finding quotes text that really exists in the SRS",
+        "Each Given/When/Then has one observable Then",
+        "RTM rows match the requirement IDs in the SRS, none invented"
+      ],
+      "checks_ms": [
+        "Setiap penemuan memetik teks yang benar-benar wujud dalam SRS",
+        "Setiap Given/When/Then mempunyai satu Then yang boleh diperhatikan",
+        "Baris RTM sepadan dengan ID keperluan dalam SRS, tiada yang direka"
+      ]
+    },
+    "W03": {
+      "folder": "W03-semakan-reka-bentuk-risiko",
+      "module": "M03",
+      "minutes": 20,
+      "slot": "Hari 1, 15:05 hingga 15:25",
+      "title_en": "AI design review and 5 x 5 risk register",
+      "title_ms": "Semakan reka bentuk AI dan daftar risiko 5 x 5",
+      "goal_en": "Review the ShopFast architecture and OpenAPI contract with the AI, challenge one finding for evidence, then build a scored risk register in PPrISA07 format.",
+      "goal_ms": "Semak seni bina dan kontrak OpenAPI ShopFast bersama AI, cabar satu penemuan untuk bukti, kemudian bina daftar risiko berskor format PPrISA07.",
+      "steps_en": [
+        "Run /design-review on the order endpoint",
+        "Challenge one finding: ask for the exact line as evidence",
+        "Run /risk-register and approve the CSV",
+        "Sort by score and agree the top three test priorities"
+      ],
+      "steps_ms": [
+        "Jalankan /design-review untuk endpoint pesanan",
+        "Cabar satu penemuan: minta baris tepat sebagai bukti",
+        "Jalankan /risk-register dan luluskan CSV",
+        "Susun mengikut skor dan setuju tiga keutamaan ujian teratas"
+      ],
+      "prompts": [
+        "/design-review GET /api/orders/{orderId}",
+        "Petik baris tepat dalam shopfast/docs/openapi.yaml yang membuktikan penemuan anda tentang GET /api/orders/{orderId}.",
+        "/risk-register checkout ShopFast berdasarkan penemuan semakan reka bentuk di atas"
+      ],
+      "output": "outputs/m03-risk-register.csv",
+      "checks_en": [
+        "Findings quote the exact path or line in openapi.yaml or architecture.md",
+        "Scores use 1 to 5 scales and Skor = K x I",
+        "Each top risk has a test priority, not only a mitigation"
+      ],
+      "checks_ms": [
+        "Penemuan memetik laluan atau baris tepat dalam openapi.yaml atau architecture.md",
+        "Skor menggunakan skala 1 hingga 5 dan Skor = K x I",
+        "Setiap risiko utama mempunyai keutamaan ujian, bukan sekadar mitigasi"
+      ]
+    },
+    "W04": {
+      "folder": "W04-reka-bentuk-ujian",
+      "module": "M04",
+      "minutes": 15,
+      "slot": "Hari 1, 16:40 hingga 16:55",
+      "title_en": "AI test design: EP, BVA and coverage gaps",
+      "title_ms": "Reka bentuk ujian AI: EP, BVA dan jurang liputan",
+      "goal_en": "Generate D13-format test cases with named techniques for two checkout requirements, then ask the AI to find RTM coverage gaps.",
+      "goal_ms": "Jana kes ujian format D13 dengan teknik dinamakan untuk dua keperluan checkout, kemudian minta AI mencari jurang liputan RTM.",
+      "steps_en": [
+        "Run /testcases for REQ-CHK-01 and REQ-CHK-03",
+        "Approve the CSV and check boundaries 0, 1, 10, 11 and RM200.00",
+        "Ask the Plan agent for RTM coverage gaps",
+        "Merge the good cases into your Lab B sheet"
+      ],
+      "steps_ms": [
+        "Jalankan /testcases untuk REQ-CHK-01 dan REQ-CHK-03",
+        "Luluskan CSV dan semak sempadan 0, 1, 10, 11 dan RM200.00",
+        "Minta ejen Plan mencari jurang liputan RTM",
+        "Gabungkan kes yang baik ke dalam helaian Makmal B"
+      ],
+      "prompts": [
+        "/testcases REQ-CHK-01 dan REQ-CHK-03, maksimum 10 kes ujian",
+        "Bandingkan outputs/m04-testcases.csv dengan outputs/m02-rtm.csv. Senaraikan keperluan tanpa kes ujian dan kes ujian tanpa keperluan. Jangan tulis fail."
+      ],
+      "output": "outputs/m04-testcases.csv",
+      "checks_en": [
+        "Boundary values 10 and RM200.00 are present",
+        "Every case names its technique and REQ-CHK ID",
+        "Expected results come from the SRS, not from what the app does"
+      ],
+      "checks_ms": [
+        "Nilai sempadan 10 dan RM200.00 ada",
+        "Setiap kes menamakan teknik dan ID REQ-CHK",
+        "Hasil dijangka datang daripada SRS, bukan daripada tingkah laku aplikasi"
+      ]
+    },
+    "W05": {
+      "folder": "W05-automasi-ujian",
+      "module": "M05",
+      "minutes": 15,
+      "slot": "Hari 2, 10:10 hingga 10:25",
+      "title_en": "AI-generated UI and API tests that find a real bug",
+      "title_ms": "Ujian UI dan API dijana AI yang menemui pepijat sebenar",
+      "goal_en": "Ask the AI for a Playwright test for the quantity boundary, save and run it against ShopFast, read the failure, then generate API tests from the OpenAPI contract.",
+      "goal_ms": "Minta AI menjana ujian Playwright untuk sempadan kuantiti, simpan dan jalankan pada ShopFast, baca kegagalan, kemudian jana ujian API daripada kontrak OpenAPI.",
+      "steps_en": [
+        "Run /gen-ui-test for TC-CHK-004 (quantity 10)",
+        "Save the code block as tests\\ui\\m05-senario.spec.js",
+        "Run it with npx playwright test and read the result",
+        "Run /gen-api-tests for the same requirements"
+      ],
+      "steps_ms": [
+        "Jalankan /gen-ui-test untuk TC-CHK-004 (kuantiti 10)",
+        "Simpan blok kod sebagai tests\\ui\\m05-senario.spec.js",
+        "Jalankan dengan npx playwright test dan baca hasilnya",
+        "Jalankan /gen-api-tests untuk keperluan yang sama"
+      ],
+      "prompts": [
+        "/gen-ui-test TC-CHK-004 tambah P002 kuantiti 10 ke troli dan semak troli menerima kuantiti 10 (REQ-CHK-01)",
+        "cd shopfast ; npx playwright test tests/ui/m05-senario.spec.js",
+        "/gen-api-tests REQ-CHK-01 REQ-CHK-03"
+      ],
+      "output": "outputs/m05-ui-test.md, shopfast/tests/ui/m05-senario.spec.js, outputs/m05-api-tests.md",
+      "checks_en": [
+        "The test selects elements by data-testid that really exist",
+        "A failing test is a finding: reproduce it by hand before logging a bug",
+        "Generated tests are reviewed like code before they are committed"
+      ],
+      "checks_ms": [
+        "Ujian memilih elemen melalui data-testid yang benar-benar wujud",
+        "Ujian yang gagal ialah penemuan: hasilkan semula secara manual sebelum log pepijat",
+        "Ujian yang dijana disemak seperti kod sebelum di-commit"
+      ]
+    },
+    "W06": {
+      "folder": "W06-pepijat-metrik",
+      "module": "M06",
+      "minutes": 25,
+      "slot": "Hari 2, 12:00 hingga 12:25",
+      "title_en": "AI bug reports and quality metrics",
+      "title_ms": "Laporan pepijat dan metrik kualiti dibantu AI",
+      "goal_en": "Turn the failure you reproduced into a complete bug report with KRISAv2 severity, compute metrics from your test run, and prepare a triage summary.",
+      "goal_ms": "Tukar kegagalan yang anda hasilkan semula kepada laporan pepijat lengkap dengan severity KRISAv2, kira metrik daripada larian ujian dan sediakan ringkasan triage.",
+      "steps_en": [
+        "Run /bug-report with steps, expected and actual result",
+        "Check severity against KRISAv2 Bab 6 Jadual 6.3",
+        "Run /metrics with your run numbers",
+        "Ask for a three-line triage summary"
+      ],
+      "steps_ms": [
+        "Jalankan /bug-report dengan langkah, hasil dijangka dan hasil sebenar",
+        "Semak severity dengan KRISAv2 Bab 6 Jadual 6.3",
+        "Jalankan /metrics dengan angka larian anda",
+        "Minta ringkasan triage tiga baris"
+      ],
+      "prompts": [
+        "/bug-report Langkah: tambah P002 kuantiti 10 melalui POST /api/cart/items. Dijangka: 201 dan kuantiti 10 diterima (REQ-CHK-01). Sebenar: 400 VALIDATION_ERROR. Bukti: ujian tests/ui/m05-senario.spec.js gagal, binaan 1.0.0.",
+        "/metrics kes dirancang 20, dilaksana 18, lulus 13, gagal 5, pepijat ditemui 5, pepijat bocor ke produksi 1, saiz kod 1.2 KLOC",
+        "Ringkaskan pepijat terbuka mengikut severity dan keutamaan untuk mesyuarat triage dalam 3 baris. Jangan tulis fail."
+      ],
+      "output": "outputs/m06-bug-report-BUG-CHK-001.md, outputs/m06-metrics.csv",
+      "checks_en": [
+        "Steps can be reproduced by someone else",
+        "Severity follows KRISAv2 Jadual 6.3; priority is a business decision",
+        "Metric formulas are shown so the numbers can be rechecked"
+      ],
+      "checks_ms": [
+        "Langkah boleh dihasilkan semula oleh orang lain",
+        "Severity mengikut KRISAv2 Jadual 6.3; keutamaan ialah keputusan bisnes",
+        "Formula metrik dipaparkan supaya angka boleh disemak semula"
+      ]
+    },
+    "W07": {
+      "folder": "W07-audit-dokumentasi",
+      "module": "M07",
+      "minutes": 20,
+      "slot": "Hari 2, 14:35 hingga 14:55",
+      "title_en": "AI audit, CAPA and Test Summary Report",
+      "title_ms": "Audit, CAPA dan Laporan Ringkasan Ujian dibantu AI",
+      "goal_en": "Audit your outputs folder against the ISO/CMMI-lite checklist, raise CAPA for non-conformities and draft the D14/D16 Test Summary with a release recommendation.",
+      "goal_ms": "Audit folder outputs anda dengan senarai semak ISO/CMMI-lite, bangkitkan CAPA bagi ketidakpatuhan dan draf Laporan Ringkasan Ujian D14/D16 dengan cadangan keluaran.",
+      "steps_en": [
+        "Run /audit on the RTM and test cases (Plan agent)",
+        "Switch to Build and save the audit to outputs/",
+        "Run /capa on the saved audit, then /test-summary",
+        "Decide GO, NO-GO or CONDITIONAL as a team"
+      ],
+      "steps_ms": [
+        "Jalankan /audit pada RTM dan kes ujian (ejen Plan)",
+        "Tukar ke Build dan simpan audit ke outputs/",
+        "Jalankan /capa pada audit yang disimpan, kemudian /test-summary",
+        "Putuskan GO, NO-GO atau CONDITIONAL sebagai pasukan"
+      ],
+      "prompts": [
+        "/audit outputs/m02-rtm.csv dan outputs/m04-testcases.csv",
+        "Simpan hasil audit di atas ke outputs/m07-audit.md dengan pautan ../../references/.",
+        "/capa semua NC dalam outputs/m07-audit.md",
+        "/test-summary Ujian sistem 14 hingga 15 September 2026, binaan 1.0.0, penguji 4 orang"
+      ],
+      "output": "outputs/m07-audit.md, outputs/m07-capa.md, outputs/m07-test-summary.md",
+      "checks_en": [
+        "Each non-conformity cites evidence (file and line)",
+        "Exit criteria use KRISAv2 Bab 6 6.8 numbers (95% pass, severity 1 and 2 closed)",
+        "The release decision is made and signed by a person"
+      ],
+      "checks_ms": [
+        "Setiap ketidakpatuhan memetik bukti (fail dan baris)",
+        "Kriteria keluar menggunakan angka KRISAv2 Bab 6 6.8 (95% lulus, severity 1 dan 2 ditutup)",
+        "Keputusan keluaran dibuat dan ditandatangani oleh manusia"
+      ]
+    },
+    "W08": {
+      "folder": "W08-perubahan-pemantauan",
+      "module": "M08",
+      "minutes": 15,
+      "slot": "Hari 2, 16:10 hingga 16:25",
+      "title_en": "AI change request, impact analysis and CI review",
+      "title_ms": "Permohonan pindaan, analisis impak dan semakan CI dibantu AI",
+      "goal_en": "Raise a PPrISA10 change request for a new promo code, let the AI trace the impact through the RTM and test cases, and review the CI quality gate workflow.",
+      "goal_ms": "Bangkitkan permohonan pindaan PPrISA10 untuk kod promo baharu, biar AI menjejak impak melalui RTM dan kes ujian, dan semak aliran kerja quality gate CI.",
+      "steps_en": [
+        "Run /change-request for promo code RAYA26",
+        "Run /impact-analysis (Plan agent)",
+        "Ask the Plan agent to review the GitHub Actions workflow",
+        "Agree the minimal regression set and rollback trigger"
+      ],
+      "steps_ms": [
+        "Jalankan /change-request untuk kod promo RAYA26",
+        "Jalankan /impact-analysis (ejen Plan)",
+        "Minta ejen Plan menyemak aliran kerja GitHub Actions",
+        "Setuju set regresi minimum dan pencetus rollback"
+      ],
+      "prompts": [
+        "/change-request Tambah kod promo RAYA26 (diskaun 26 peratus, sah 1 hingga 31 Mac 2027) pada checkout ShopFast",
+        "/impact-analysis RAYA26",
+        "Semak ../.github/workflows/shopfast-quality-gate.yml sebagai quality gate. Nyatakan apa yang disemak, apa yang tiada (contoh imbasan keselamatan atau ambang liputan) dan 3 cadangan. Jangan tulis fail."
+      ],
+      "output": "outputs/m08-change-request.md, outputs/m08-impact-analysis.md",
+      "checks_en": [
+        "RAYA26 at 26 percent breaks the 25 percent cap in REQ-CHK-03: did the AI notice?",
+        "The regression set is minimal and traced to REQ-CHK IDs",
+        "Rollback has a clear trigger and an owner"
+      ],
+      "checks_ms": [
+        "RAYA26 pada 26 peratus melanggar had 25 peratus dalam REQ-CHK-03: adakah AI perasan?",
+        "Set regresi adalah minimum dan dijejak ke ID REQ-CHK",
+        "Rollback mempunyai pencetus yang jelas dan pemilik"
+      ]
+    },
+    "W09": {
+      "folder": "W09-kemuncak",
+      "module": "M09",
+      "minutes": 10,
+      "slot": "Hari 2, 17:10 hingga 17:20",
+      "title_en": "Capstone with an AI pair: prove the quality gate",
+      "title_ms": "Kemuncak bersama rakan AI: buktikan quality gate",
+      "goal_en": "Let the AI evaluate a quality gate from the evidence you produced over two days, including a live test run, then present the trail and the AI mistakes you caught.",
+      "goal_ms": "Biar AI menilai quality gate daripada bukti yang anda hasilkan selama dua hari, termasuk larian ujian secara langsung, kemudian bentangkan jejak dan kesilapan AI yang anda tangkap.",
+      "steps_en": [
+        "Run /quality-gate G3 with a live test run",
+        "Check every criterion has an evidence file",
+        "Ask the AI to list its own weakest conclusions",
+        "Commit your outputs as audit evidence"
+      ],
+      "steps_ms": [
+        "Jalankan /quality-gate G3 dengan larian ujian langsung",
+        "Semak setiap kriteria mempunyai fail bukti",
+        "Minta AI menyenaraikan kesimpulannya yang paling lemah",
+        "Commit outputs anda sebagai bukti audit"
+      ],
+      "prompts": [
+        "/quality-gate G3 jalankan-ujian",
+        "Senaraikan 3 kesimpulan paling lemah dalam keputusan quality gate tadi dan bukti tambahan yang diperlukan untuk setiap satu. Jangan tulis fail.",
+        "git add -f outputs shopfast/tests/ui/m05-senario.spec.js ; git commit -m \"bukti kemuncak pasukan\""
+      ],
+      "output": "outputs/m09-quality-gate.md",
+      "checks_en": [
+        "Every criterion links to an evidence file and a real value",
+        "No GO while any criterion is unmet or without evidence",
+        "At least one AI mistake was found and corrected by the team"
+      ],
+      "checks_ms": [
+        "Setiap kriteria dipautkan ke fail bukti dan nilai sebenar",
+        "Tiada GO selagi ada kriteria tidak dipenuhi atau tanpa bukti",
+        "Sekurang-kurangnya satu kesilapan AI ditemui dan dibetulkan oleh pasukan"
+      ]
+    }
+  }
+}

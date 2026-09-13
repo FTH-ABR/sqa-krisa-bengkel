@@ -1,0 +1,51 @@
+<!doctype html><html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bengkel SQA KRISAv2</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{--ink:#0F1620;--paper:#E7ECF2;--panel:#fff;--line:#D8E0EA;--muted:#5A6879;--bp:#1B3B73;--bps:#E9F0FA;--ai:#9B4D7A}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,'Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
+a{color:#1f5fa8}a:hover{color:#0b3d75}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header.top{background:var(--ink);color:#fff;padding:26px 0 30px}
+header.top a{color:#BFD3F7}.crumb{font:500 13px 'IBM Plex Mono',monospace;color:#9fb0c6;margin-bottom:10px}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);line-height:1.1;margin:6px 0}
+h2{font-family:'Space Grotesk',sans-serif;font-size:24px;margin:34px 0 12px;color:var(--bp)}
+h3{font-family:'Space Grotesk',sans-serif;font-size:18px;margin:0 0 8px}
+.en{color:#C3CEDC;font-size:18px}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{display:inline-block;padding:5px 12px;border-radius:999px;font:600 13px Inter;background:#ffffff1a;color:#fff;border:1px solid #ffffff33}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.btn{display:inline-block;padding:9px 14px;border-radius:8px;font-weight:600;text-decoration:none;color:#fff;background:var(--bp);margin:4px 6px 4px 0}
+.btn.ai{background:var(--ai)}.btn.ghost{background:#fff;color:var(--bp);border:1px solid var(--line)}
+ol.steps{margin:0;padding-left:20px}ol.steps li{margin:6px 0}
+table{border-collapse:collapse;width:100%;background:#fff}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px}
+th{background:var(--bp);color:#fff;font-weight:600}
+.tw{overflow-x:auto;border-radius:10px;border:1px solid var(--line)}
+.mono,code{font-family:'IBM Plex Mono',Consolas,monospace;font-size:13.5px}
+pre{background:#0F1620;color:#E9F0FA;padding:14px 16px;border-radius:10px;overflow-x:auto;font-size:13.5px}
+img.fig{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:#fff}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.thumbs a{display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.thumbs img{width:100%;display:block}.thumbs span{display:block;font:500 12px 'IBM Plex Mono';padding:4px 8px;color:var(--muted)}
+.note{background:var(--bps);border-left:5px solid var(--bp);padding:12px 16px;border-radius:8px;font-size:14.5px}
+.aibox{border-left:6px solid var(--ai)}
+footer{margin:50px 0 30px;color:var(--muted);font-size:13px}
+.tag{font:600 12px 'IBM Plex Mono';color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+</style></head><body><header class="top"><div class="wrap"><div class="tag" style="color:#C98FB0">Bengkel Amali 2 Hari · 14 hingga 15 September 2026 · 09:30 hingga 17:00</div>
+<h1>Menguasai Jaminan Kualiti Perisian (SQA) moden</h1><div class="en">Dipraktikkan hujung ke hujung, selaras KRISAv2 Beta 2026 dan PPrISA 2.0 (JDN)</div>
+<div class="meta"><span class="pill">Makmal Komputer (Aras 11), Menara MyIPO</span><span class="pill">Penceramah: Encik Al-Abrar bin Abdul Wahid</span></div>
+<div class="meta"><a class="btn ai" href="workshop-ai/W00-setup/index.html">Mula: Setup PC dan opencode</a><a class="btn ghost" href="https://github.com/FTH-ABR/sqa-krisa-bengkel">Repositori GitHub</a><a class="btn ghost" href="references/README.md">Rujukan JDN</a></div></div></header>
+<main class="wrap">
+<h2>Mula dalam 5 minit</h2><pre>cd $HOME
+git clone https://github.com/FTH-ABR/sqa-krisa-bengkel.git
+cd sqa-krisa-bengkel
+powershell -ExecutionPolicy Bypass -File .\setup\check-lab.ps1</pre>
+<h2>Jadual dan bahan</h2><div class="tw"><table><tr><th>Masa</th><th>Modul</th><th>Slaid dan rujukan</th><th>Bengkel AI</th></tr><tr><th colspan='4'>Hari 1: Membina Kualiti Sebelum Pembinaan</th></tr><tr><td class='mono'>09:00 hingga 09:30</td><td>Aluan, pra-penilaian dan persediaan PC</td><td></td><td><a href='workshop-ai/W00-setup/index.html'>W00 Setup</a></td></tr><tr><td class='mono'>09:30 hingga 11:00</td><td><b>M01</b> Minda Kualiti<br><span style='color:#5A6879'>The Quality Mindset</span></td><td><a href='slides/M01-M02/index.html'>Hab modul</a></td><td><a href='workshop-ai/W01-minda-kualiti/index.html'>W01 (20 min)</a></td></tr><tr><td class='mono'>11:15 hingga 13:00</td><td><b>M02</b> Perancangan QA dan Kualiti Proaktif<br><span style='color:#5A6879'>QA Planning and Proactive Quality</span></td><td><a href='slides/M01-M02/index-M02.html'>Hab modul</a></td><td><a href='workshop-ai/W02-perancangan-qa/index.html'>W02 (25 min)</a></td></tr><tr><td class='mono'>14:00 hingga 15:30</td><td><b>M03</b> Semakan Reka Bentuk dan Perancangan Ujian Berasaskan Risiko<br><span style='color:#5A6879'>Design Review and Risk-Based Test Planning</span></td><td><a href='slides/M03/index.html'>Hab modul</a></td><td><a href='workshop-ai/W03-semakan-reka-bentuk-risiko/index.html'>W03 (20 min)</a></td></tr><tr><td class='mono'>15:45 hingga 17:00</td><td><b>M04</b> Reka Bentuk Ujian dan Asas Pengurusan Ujian<br><span style='color:#5A6879'>Test Design and Test Management Fundamentals</span></td><td><a href='slides/M04/index.html'>Hab modul</a></td><td><a href='workshop-ai/W04-reka-bentuk-ujian/index.html'>W04 (15 min)</a></td></tr><tr><th colspan='4'>Hari 2: Ujian, Kualiti Berterusan dan Jaminan Produksi</th></tr><tr><td class='mono'>09:00 hingga 10:30</td><td><b>M05</b> Pengujian Perisian dan Automasi Ujian<br><span style='color:#5A6879'>Software Testing and Test Automation</span></td><td><a href='slides/M05/index.html'>Hab modul</a></td><td><a href='workshop-ai/W05-automasi-ujian/index.html'>W05 (15 min)</a></td></tr><tr><td class='mono'>10:45 hingga 12:30</td><td><b>M06</b> Pengurusan Pepijat dan Metrik Kualiti<br><span style='color:#5A6879'>Bug Management and Quality Metrics</span></td><td><a href='slides/M06/index.html'>Hab modul</a></td><td><a href='workshop-ai/W06-pepijat-metrik/index.html'>W06 (25 min)</a></td></tr><tr><td class='mono'>13:30 hingga 15:00</td><td><b>M07</b> Audit, Pematuhan dan Dokumentasi Kualiti<br><span style='color:#5A6879'>Audit, Compliance and Quality Documentation</span></td><td><a href='slides/M07/index.html'>Hab modul</a></td><td><a href='workshop-ai/W07-audit-dokumentasi/index.html'>W07 (20 min)</a></td></tr><tr><td class='mono'>15:15 hingga 16:30</td><td><b>M08</b> Pengurusan Perubahan, Pemantauan dan Kualiti Berterusan<br><span style='color:#5A6879'>Change Management, Monitoring and Continuous Quality</span></td><td><a href='slides/M08/index.html'>Hab modul</a></td><td><a href='workshop-ai/W08-perubahan-pemantauan/index.html'>W08 (15 min)</a></td></tr><tr><td class='mono'>16:30 hingga 17:30</td><td><b>M09</b> Latihan Kemuncak dan Penutup Kursus<br><span style='color:#5A6879'>Capstone Exercise and Course Wrap-Up</span></td><td><a href='slides/M09/index.html'>Hab modul</a></td><td><a href='workshop-ai/W09-kemuncak/index.html'>W09 (10 min)</a></td></tr></table></div>
+<h2>Gambaran KRISAv2</h2><img class="fig" src="slides/_diagrams/krisa-v2-phases.png" alt="KRISAv2 fasa">
+<div class="grid g3" style="margin-top:14px">
+<div class="card"><h3>Rujukan rasmi</h3><p><a href="references/README.md">KRISAv2 Beta 2026, KRISA 1.0, PPrISA 2.0, templat D01 hingga D18 dan PPrISA01 hingga PPrISA18</a></p></div>
+<div class="card"><h3>Kit makmal ShopFast</h3><p><a href="https://github.com/FTH-ABR/sqa-krisa-bengkel/tree/main/lab">Aplikasi checkout, SRS, OpenAPI, ujian Postman dan Playwright, templat SQA</a></p></div>
+<div class="card"><h3>Pembantu AI</h3><p><a href="workshop-ai/W00-setup/index.html">opencode dengan model percuma OpenCode Zen. Data sintetik sahaja.</a></p></div></div>
+<h2>Pelan kursus</h2><p><a href="docs/pelan-kursus-sqa-bengkel-vKRISA2.0.html">Pelan kursus dwibahasa vKRISA2.0</a></p>
+</main>
+<footer class="wrap">Bengkel Amali SQA KRISAv2 dan PPrISA 2.0 · 14 hingga 15 September 2026 · Makmal Komputer Aras 11, Menara MyIPO · Jurulatih: Al-Abrar bin Abdul Wahid ·
+Rujukan hak cipta Jabatan Digital Negara (JDN), <a href="https://sqa.jdn.gov.my/index.php/ms/">sqa.jdn.gov.my</a></footer></body></html>

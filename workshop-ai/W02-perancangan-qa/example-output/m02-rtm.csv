@@ -1,0 +1,7 @@
+BR_ID,FR_ID,Requirement,Test_Case_IDs,Test_Level,Status,Defect_IDs,Coverage
+BR-02,REQ-CHK-01,Kuantiti item nombor bulat 1 hingga 10 dengan penolakan 400 VALIDATION_ERROR dan OUT_OF_STOCK,,Sistem,Belum Diuji,,Tiada
+BR-03,REQ-CHK-02,Kod promosi 6 hingga 10 aksara huruf besar dan digit sahaja dengan kod aktif RAYA15 dan MEGA20,,Sistem,Belum Diuji,,Tiada
+BR-03;BR-04,REQ-CHK-03,Diskaun ahli 10% tambah diskaun promosi dengan had 25% dan caj penghantaran RM8 percuma bagi subtotal RM200 ke atas,,Sistem,Belum Diuji,,Tiada
+BR-05,REQ-CHK-04,Kad tamat tempoh ditolak 400 CARD_EXPIRED dan medan cardExpiry MM/YY wajib bagi kaedah CARD,,Sistem,Belum Diuji,,Tiada
+BR-06,REQ-CHK-05,Kitar hayat pesanan NEW hingga PAID hingga PACKED hingga SHIPPED hingga COMPLETED dan peralihan lain ditolak 409,,Sistem,Belum Diuji,,Tiada
+BR-08,REQ-CHK-06,Masa respons checkout pada p95 kurang daripada 2 saat dengan 50 pengguna serentak,,PAT,Belum Diuji,,Tiada

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopFast - Pembayaran</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">ShopFast</div>
+    <div class="tagline">Kedai dalam talian <span class="en">Online store (training system, data fiktif)</span></div>
+  </header>
+
+  <div class="messages">
+    <div id="error-message" class="alert error" role="alert" data-testid="error-message" hidden></div>
+  </div>
+
+  <main class="layout">
+    <section class="panel products-panel" aria-labelledby="products-title">
+      <h1 id="products-title">Produk <span class="en">Products</span></h1>
+      <div id="product-grid" class="product-grid" data-testid="product-grid"></div>
+    </section>
+
+    <aside class="side">
+      <section class="panel" aria-labelledby="login-title">
+        <h2 id="login-title">Log masuk ahli <span class="en">Member login</span></h2>
+        <form id="login-form" novalidate data-testid="login-form">
+          <label for="login-email">E-mel <span class="en">Email</span></label>
+          <input id="login-email" name="email" type="text" autocomplete="username" data-testid="login-email">
+          <label for="login-password">Kata laluan <span class="en">Password</span></label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" data-testid="login-password">
+          <div class="inline login-actions">
+            <button id="login-submit" type="submit" class="secondary" data-testid="login-submit">Log masuk <span class="en">Log in</span></button>
+            <button id="login-logout" type="button" class="link" data-testid="login-logout" hidden>Log keluar <span class="en">Log out</span></button>
+          </div>
+        </form>
+        <p id="login-status" class="muted small" data-testid="login-status">Tetamu (tiada diskaun ahli) <span class="en">Guest, no member discount</span></p>
+      </section>
+
+      <section class="panel" aria-labelledby="cart-title">
+        <h2 id="cart-title">Troli <span class="en">Cart</span></h2>
+        <ul id="cart-items" class="cart-items" data-testid="cart-items"></ul>
+        <p id="cart-empty" class="muted" data-testid="cart-empty">Troli kosong <span class="en">Cart is empty</span></p>
+
+        <div class="discount-row">
+          <label for="discount-input">Kod promosi <span class="en">Promo code</span></label>
+          <div class="inline">
+            <input id="discount-input" type="text" autocomplete="off" data-testid="discount-input" placeholder="RAYA15">
+            <button id="discount-apply" type="button" class="secondary" data-testid="discount-apply">Guna <span class="en">Apply</span></button>
+          </div>
+          <p id="discount-applied" class="muted small" data-testid="discount-applied"></p>
+        </div>
+
+        <dl class="totals">
+          <div><dt>Jumlah kecil <span class="en">Subtotal</span></dt><dd data-testid="cart-subtotal" id="cart-subtotal">RM 0.00</dd></div>
+          <div class="sub"><dt>Diskaun ahli <span class="en">Member discount</span></dt><dd data-testid="cart-member-discount" id="cart-member-discount">RM 0.00</dd></div>
+          <div class="sub"><dt>Diskaun promosi <span class="en">Promo discount</span></dt><dd data-testid="cart-promo-discount" id="cart-promo-discount">RM 0.00</dd></div>
+          <div><dt>Jumlah diskaun <span class="en">Total discount</span></dt><dd data-testid="cart-discount" id="cart-discount">RM 0.00</dd></div>
+          <div><dt>Penghantaran <span class="en">Shipping</span></dt><dd data-testid="cart-shipping" id="cart-shipping">RM 0.00</dd></div>
+          <div class="grand"><dt>Jumlah <span class="en">Total</span></dt><dd data-testid="cart-total" id="cart-total">RM 0.00</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="checkout-title">
+        <h2 id="checkout-title">Maklumat penghantaran <span class="en">Checkout details</span></h2>
+        <form id="checkout-form" novalidate data-testid="checkout-form">
+          <label for="input-fullName">Nama penuh <span class="en">Full name</span></label>
+          <input id="input-fullName" name="fullName" type="text" data-testid="input-fullName" autocomplete="name">
+
+          <label for="input-email">E-mel <span class="en">Email</span></label>
+          <input id="input-email" name="email" type="text" data-testid="input-email" autocomplete="email">
+
+          <label for="input-phone">No. telefon <span class="en">Phone</span></label>
+          <input id="input-phone" name="phone" type="text" data-testid="input-phone" autocomplete="tel" placeholder="0123456789">
+
+          <label for="input-postcode">Poskod <span class="en">Postcode</span></label>
+          <input id="input-postcode" name="postcode" type="text" data-testid="input-postcode" placeholder="50480">
+
+          <label for="select-payment">Kaedah bayaran <span class="en">Payment method</span></label>
+          <select id="select-payment" name="paymentMethod" data-testid="select-payment">
+            <option value="FPX">FPX (perbankan dalam talian)</option>
+            <option value="CARD">Kad kredit / debit</option>
+            <option value="EWALLET">E-dompet</option>
+          </select>
+
+          <div id="card-expiry-field" hidden>
+            <label for="input-cardExpiry">Tarikh luput kad (BB/TT) <span class="en">Card expiry (MM/YY)</span></label>
+            <input id="input-cardExpiry" name="cardExpiry" type="text" inputmode="numeric" placeholder="12/27" data-testid="input-cardExpiry">
+          </div>
+
+          <button id="checkout-submit" type="submit" class="primary" data-testid="checkout-submit">Buat pesanan <span class="en">Place order</span></button>
+        </form>
+      </section>
+
+      <section id="order-confirmation" class="alert success" data-testid="order-confirmation" hidden>
+        <h2>Pesanan diterima <span class="en">Order received</span></h2>
+        <p>No. pesanan <span class="en">Order ID</span>: <strong id="order-id" data-testid="order-id"></strong></p>
+        <p>Status: <span id="order-status" data-testid="order-status"></span></p>
+        <p>Jumlah dibayar <span class="en">Amount due</span>: <span id="order-total" data-testid="order-total"></span></p>
+      </section>
+    </aside>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
