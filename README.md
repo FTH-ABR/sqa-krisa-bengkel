@@ -17,6 +17,45 @@ the ShopFast lab kit, SQA templates, and offline copies of the official JDN refe
 
 ---
 
+## 0. Langkah 0: Pasang Git dan Node.js / Install Git and Node.js
+
+Buat langkah ini **sebelum** klon repositori. Buka **PowerShell** (Start, taip PowerShell, tekan Enter).
+
+**0A. Semak apa yang sudah ada / Check first**
+
+```powershell
+git --version
+node --version
+npm --version
+```
+
+Ketiga-tiga memaparkan versi (node v20 atau lebih baharu)? Terus ke bahagian 1. Nampak `is not recognized`? Pilih 0B atau 0C.
+
+**0B. PC dengan hak admin (winget) / PC with admin rights**
+
+```powershell
+winget install -e --id Git.Git --accept-source-agreements --accept-package-agreements
+winget install -e --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements
+```
+
+Klik **Yes** jika Windows meminta kebenaran.
+
+**0C. Tiada hak admin, tiada winget, atau 0B gagal / No admin rights or no winget**
+
+```powershell
+cd $HOME
+Invoke-WebRequest https://fth-abr.github.io/sqa-krisa-bengkel/setup/install-prereqs.ps1 -OutFile install-prereqs.ps1 -UseBasicParsing
+powershell -ExecutionPolicy Bypass -File .\install-prereqs.ps1
+```
+
+Skrip ini memasang Git dan Node.js versi portable dalam `%LOCALAPPDATA%\sqa-tools` dan menambahnya ke PATH pengguna.
+
+**0D. Tutup PowerShell, buka tetingkap baharu, ulang 0A.** Ketiga-tiga mesti memaparkan versi.
+
+Panduan bergambar dengan butang Salin: [W00 Setup](workshop-ai/W00-setup/index.html)
+
+---
+
 ## 1. Mula di sini / Start here (5 minit)
 
 Buka **PowerShell** atau **Windows Terminal**, kemudian:

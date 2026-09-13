@@ -35,7 +35,12 @@ footer{margin:50px 0 30px;color:var(--muted);font-size:13px}
 <div class="meta"><span class="pill">Makmal Komputer (Aras 11), Menara MyIPO</span><span class="pill">Penceramah: Encik Al-Abrar bin Abdul Wahid</span></div>
 <div class="meta"><a class="btn ai" href="workshop-ai/W00-setup/index.html">Mula: Setup PC dan opencode</a><a class="btn ghost" href="https://github.com/FTH-ABR/sqa-krisa-bengkel">Repositori GitHub</a><a class="btn ghost" href="references/README.md">Rujukan JDN</a></div></div></header>
 <main class="wrap">
-<h2>Mula dalam 5 minit</h2><pre>cd $HOME
+<h2>Langkah 0: Pasang Git dan Node.js (jika belum ada)</h2><div class="card"><p><b>0A. Semak dahulu.</b> Buka PowerShell dan taip:</p><pre>git --version
+node --version
+npm --version</pre><p>Ketiga-tiga memaparkan versi (node v20 atau lebih baharu)? Terus ke Langkah 1.</p><p><b>0B. Ada hak admin:</b></p><pre>winget install -e --id Git.Git --accept-source-agreements --accept-package-agreements
+winget install -e --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements</pre><p><b>0C. Tiada admin atau tiada winget:</b></p><pre>cd $HOME
+Invoke-WebRequest https://fth-abr.github.io/sqa-krisa-bengkel/setup/install-prereqs.ps1 -OutFile install-prereqs.ps1 -UseBasicParsing
+powershell -ExecutionPolicy Bypass -File .\install-prereqs.ps1</pre><p><b>0D.</b> Tutup PowerShell, buka tetingkap baharu dan ulang 0A. Panduan bergambar dengan butang Salin: <a href="workshop-ai/W00-setup/index.html">W00 Setup</a>.</p></div><h2>Langkah 1: Klon repositori dan semak PC</h2><pre>cd $HOME
 git clone https://github.com/FTH-ABR/sqa-krisa-bengkel.git
 cd sqa-krisa-bengkel
 powershell -ExecutionPolicy Bypass -File .\setup\check-lab.ps1</pre>

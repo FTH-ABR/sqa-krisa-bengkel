@@ -18,7 +18,7 @@ Add-Result "Windows" ($os.Version -ge "10.0") "$($os.Caption) $($os.Version)" "W
 $node = (node --version) 2>$null
 $nodeOk = $false
 if ($node -match "^v(\d+)\.") { $nodeOk = ([int]$Matches[1] -ge 20) }
-Add-Result "Node.js >= 20" $nodeOk "$node" "Pasang Node.js LTS: winget install OpenJS.NodeJS.LTS (atau https://nodejs.org)"
+Add-Result "Node.js >= 20" $nodeOk "$node" "Ikut Langkah 0 dalam README: winget install -e --id OpenJS.NodeJS.LTS, atau setup\install-prereqs.ps1 (tanpa admin)"
 
 # 3. npm global folder on PATH
 $npmPrefix = (npm config get prefix) 2>$null
@@ -28,7 +28,7 @@ Add-Result "npm global di PATH" $onPath "$npmPrefix" "Tambah folder ini ke PATH 
 
 # 4. Git
 $git = (git --version) 2>$null
-Add-Result "Git" ([bool]$git) "$git" "Pasang Git: winget install Git.Git (atau https://git-scm.com)"
+Add-Result "Git" ([bool]$git) "$git" "Ikut Langkah 0 dalam README: winget install -e --id Git.Git, atau setup\install-prereqs.ps1 (tanpa admin)"
 
 # 5. opencode
 $oc = (opencode --version) 2>$null

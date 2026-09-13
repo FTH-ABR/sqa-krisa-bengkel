@@ -18,12 +18,14 @@
       "goal_en": "Clone the course repository, check the PC, install opencode, start it in the lab folder with the free model and learn the five controls you will use all day.",
       "goal_ms": "Klon repositori kursus, semak PC, pasang opencode, mulakan dalam folder lab dengan model percuma dan kenali lima kawalan yang digunakan sepanjang hari.",
       "steps_en": [
+        "Step 0: install Git and Node.js if they are missing",
         "Clone the repository and run setup\\check-lab.ps1",
         "Install opencode with npm and check the version",
         "Start opencode in lab\\ with the Big Pickle model",
         "Learn Tab (Plan or Build), @file, /command, /models and !command"
       ],
       "steps_ms": [
+        "Langkah 0: pasang Git dan Node.js jika belum ada",
         "Klon repositori dan jalankan setup\\check-lab.ps1",
         "Pasang opencode dengan npm dan semak versi",
         "Mulakan opencode dalam lab\\ dengan model Big Pickle",

@@ -2,6 +2,45 @@
 
 Masa: 30 minit (Hari 1, 09:00 hingga 09:30). Jalankan dalam folder `lab` kecuali dinyatakan.
 
+## Langkah 0A: Buka PowerShell (Start, taip PowerShell, tekan Enter). Semak sama ada Git dan Node.js sudah dipasang. Jika ketiga-tiga memaparkan versi (node v20 atau lebih baharu), terus ke Langkah 1.
+
+Di: PowerShell
+
+```
+git --version
+node --version
+npm --version
+```
+
+## Langkah 0B: Nampak 'is not recognized'? Pada PC dengan hak admin, pasang kedua-duanya dengan winget. Klik Yes jika Windows meminta kebenaran. Kemudian tutup PowerShell dan buka semula.
+
+Di: PowerShell
+
+```
+winget install -e --id Git.Git --accept-source-agreements --accept-package-agreements
+winget install -e --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements
+```
+
+## Langkah 0C: Tiada winget, tiada hak admin, atau winget gagal? Muat turun skrip kursus dan jalankan. Ia memasang Git dan Node.js versi portable dalam folder pengguna anda. Hak admin tidak diperlukan.
+
+Di: PowerShell
+
+```
+cd $HOME
+Invoke-WebRequest https://fth-abr.github.io/sqa-krisa-bengkel/setup/install-prereqs.ps1 -OutFile install-prereqs.ps1 -UseBasicParsing
+powershell -ExecutionPolicy Bypass -File .\install-prereqs.ps1
+```
+
+## Langkah 0D: Tutup PowerShell dan buka tetingkap baharu supaya PATH dikemas kini. Semak semula. Ketiga-tiga mesti memaparkan versi sebelum meneruskan ke Langkah 1.
+
+Di: PowerShell (new window)
+
+```
+git --version
+node --version
+npm --version
+```
+
 ## Langkah 1: Buka PowerShell, pergi ke folder rumah dan klon repositori kursus.
 
 Di: PowerShell
