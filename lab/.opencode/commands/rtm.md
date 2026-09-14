@@ -28,7 +28,7 @@ Tulis fail `outputs/m02-rtm.csv` (ganti jika sudah wujud).
 Kemudian papar di skrin:
 1. Jadual ringkasan jurang: | Semakan | Keputusan | ID Terlibat | (gunakan semakan dalam RTM-guide.md seksyen 5)
 2. Liputan keperluan (%) dengan kiraan.
-3. Rujukan sebagai pautan Markdown: [KRISAv2 Bab 2, 2.11 Penyediaan Traceability Matrix (RTM), Templat T2.8](../references/krisa-v2-beta-2026/BAB2-FASA-PERMULAAN.pdf#page=56)
+3. Rujukan sebagai pautan Markdown: [KRISAv2 Bab 2, 2.11 Penyediaan Traceability Matrix (RTM), Templat T2.8](../../references/krisa-v2-beta-2026/BAB2-FASA-PERMULAAN.pdf#page=56)
 
 Akhiri jawapan dengan bahagian ini, disalin tepat:
 

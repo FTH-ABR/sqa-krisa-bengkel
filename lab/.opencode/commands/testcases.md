@@ -28,7 +28,7 @@ Tulis atau kemas kini fail `outputs/m04-testcases.csv`.
 
 Kemudian papar di skrin:
 1. Jadual: | Teknik | Bilangan Kes | TC_ID |
-2. Rujukan sebagai pautan Markdown: [KRISAv2 Bab 6, 6.7 Dokumentasi Persediaan Ujian](../references/krisa-v2-beta-2026/BAB6-FASA-PENGUJIAN-PENERIMAAN.pdf#page=9) dan [KRISAv2 Bab 5, 5.7 Pengujian Sistem](../references/krisa-v2-beta-2026/BAB5-FASA-PEMBANGUNAN.pdf#page=33)
+2. Rujukan sebagai pautan Markdown: [KRISAv2 Bab 6, 6.7 Dokumentasi Persediaan Ujian](../../references/krisa-v2-beta-2026/BAB6-FASA-PENGUJIAN-PENERIMAAN.pdf#page=9) dan [KRISAv2 Bab 5, 5.7 Pengujian Sistem](../../references/krisa-v2-beta-2026/BAB5-FASA-PEMBANGUNAN.pdf#page=33)
 
 Akhiri jawapan dengan bahagian ini, disalin tepat:
 

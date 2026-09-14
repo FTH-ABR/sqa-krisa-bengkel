@@ -26,7 +26,7 @@ Tulis fail `outputs/m03-risk-register.csv` (ganti jika sudah wujud).
 
 Kemudian papar di skrin:
 1. Jadual 5 risiko teratas: | ID | Risiko | Skor | Tahap | Keutamaan_Ujian |
-2. Rujukan sebagai pautan Markdown: [PPrISA07 Pelan Pengurusan Risiko](../references/pprisa-2.0/templates/pdf/PPrISA07-Pelan_Pengurusan_Risiko.pdf) dan [PPrISA 2.0, 4.2.3 a) Pengurusan Risiko](../references/pprisa-2.0/PPrISA_2.0_Versi_Beta_Februari_2025.pdf#page=71)
+2. Rujukan sebagai pautan Markdown: [PPrISA07 Pelan Pengurusan Risiko](../../references/pprisa-2.0/templates/pdf/PPrISA07-Pelan_Pengurusan_Risiko.pdf) dan [PPrISA 2.0, 4.2.3 a) Pengurusan Risiko](../../references/pprisa-2.0/PPrISA_2.0_Versi_Beta_Februari_2025.pdf#page=71)
 
 Akhiri jawapan dengan bahagian ini, disalin tepat:
 

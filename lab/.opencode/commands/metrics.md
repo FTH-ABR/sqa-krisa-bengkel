@@ -23,7 +23,7 @@ Tulis fail `outputs/m06-metrics.csv` (ganti jika sudah wujud).
 Kemudian papar di skrin:
 1. Jadual: | ID | Metrik | Kiraan | Nilai | Sasaran | Status |
 2. Tafsiran: 3 poin ringkas tentang maksud keputusan untuk kesediaan pelepasan.
-3. Rujukan sebagai pautan Markdown: [KRISAv2 Bab 6, 6.6 Metrik Pengukuran](../references/krisa-v2-beta-2026/BAB6-FASA-PENGUJIAN-PENERIMAAN.pdf#page=6) dan [PPrISA 2.0, 5.4.2 ii b) Penilaian Kualiti Serahan Projek](../references/pprisa-2.0/PPrISA_2.0_Versi_Beta_Februari_2025.pdf#page=94)
+3. Rujukan sebagai pautan Markdown: [KRISAv2 Bab 6, 6.6 Metrik Pengukuran](../../references/krisa-v2-beta-2026/BAB6-FASA-PENGUJIAN-PENERIMAAN.pdf#page=6) dan [PPrISA 2.0, 5.4.2 ii b) Penilaian Kualiti Serahan Projek](../../references/pprisa-2.0/PPrISA_2.0_Versi_Beta_Februari_2025.pdf#page=94)
 
 Akhiri jawapan dengan bahagian ini, disalin tepat:
 
